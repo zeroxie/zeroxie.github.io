@@ -1,0 +1,1363 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="码诗园" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="NodeJs 学习记录二">
+<meta name="keywords" content="Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJs学习记录二">
+<meta property="og:url" content="http://yoursite.com/2016/09/11/NodeJS学习记录二/index.html">
+<meta property="og:site_name" content="码诗园">
+<meta property="og:description" content="NodeJs 学习记录二">
+<meta property="og:updated_time" content="2017-07-05T08:11:15.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJs学习记录二">
+<meta name="twitter:description" content="NodeJs 学习记录二">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '谢晓驰'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/09/11/NodeJS学习记录二/"/>
+
+
+
+
+
+  <title>NodeJs学习记录二 | 码诗园</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41d11fd6d983b317e91d1279ee13ce54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">码诗园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益活动
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/09/11/NodeJS学习记录二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谢 晓 驰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zero.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码诗园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NodeJs学习记录二</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-09-11T23:20:02+08:00">
+                2016-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="NodeJs-学习记录二"><a href="#NodeJs-学习记录二" class="headerlink" title="NodeJs 学习记录二"></a>NodeJs 学习记录二</h1><a id="more"></a>
+<hr>
+<h2 id="QueryString"><a href="#QueryString" class="headerlink" title="QueryString"></a>QueryString</h2><pre><code>作用:
+    将GET/POST传递过来的参数，进行解析
+    GET : ?username=zhangsan&amp;pwd=123
+    POST : username=zhangsan&amp;pwd=123
+
+使用:
+    const querystring = require(&apos;querystring&apos;)
+
+    const paramsObj = querystring.parse(键值对的字符串)
+</code></pre><hr>
+<h2 id="GET-amp-POST"><a href="#GET-amp-POST" class="headerlink" title="GET&amp;POST"></a>GET&amp;POST</h2><pre><code>相同点:
+    都是HTTP协议的方法
+    都能传递参数给服务器
+
+不同点:
+    1、传参的方式不一样
+        GET 放在路径后面 ?开始，后面键值对
+        POST 放在请求体 键值对的方式
+
+    2、传参的限制不一样
+        GET 2048
+        POST 2M
+
+    3、GET有缓存，POST没有
+
+    4、GET传参不安全，POST相对安全
+
+开发中的建议
+    如果只是单纯的获取数据，就用GET，因为GET有缓存效率高
+
+    如果是要向服务器提交数据，就用POST
+</code></pre><hr>
+<h2 id="fs-amp-path"><a href="#fs-amp-path" class="headerlink" title="fs&amp;path"></a>fs&amp;path</h2><h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><pre><code>作用：获取路径
+
+path.join(__dirname,&apos;你要读取的文件夹下面的文件名称即可&apos;)
+
+__dirname全局属性，代表当前文件所在的文件夹路径
+
+path.join会自动判断文件的路径，并且给他加上`/`
+</code></pre><h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><pre><code>作用:读取服务器硬盘上面的某一个文件(操作文件)
+
+fs.readFile ： 异步读取服务器硬盘上面的某一个文件
+</code></pre><hr>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><pre><code>fs:node去读取服务器硬盘中的文件(操作文件)
+
+path:获取文件的路径
+
+上面两个基本上配合起来用
+</code></pre><hr>
+<h2 id="出现乱码的原因及解决方案"><a href="#出现乱码的原因及解决方案" class="headerlink" title="出现乱码的原因及解决方案"></a>出现乱码的原因及解决方案</h2><h3 id="出现乱码的原因"><a href="#出现乱码的原因" class="headerlink" title="出现乱码的原因"></a>出现乱码的原因</h3><pre><code>我们文件在写入和读取的时候，编码不一致，造成的问题
+</code></pre><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><pre><code>文件在写入与读取的时候，要保持编码一致，并且用UTF-8 Android
+</code></pre><h3 id="编码介绍"><a href="#编码介绍" class="headerlink" title="编码介绍"></a>编码介绍</h3><pre><code>ASCII 键盘上看到了
+ISO-8859-1 欧洲计算机协会整的
+韩语 xxx
+中国 GB2312 5000汉字
+     GBK 2万个汉字    
+
+大五码：台湾，香港 繁体中文
+
+日语 
+    片假名，平假名
+
+UTF-8 包含世界上所有国家最常用的文字，统一
+</code></pre><h3 id="Node支持的编码"><a href="#Node支持的编码" class="headerlink" title="Node支持的编码"></a>Node支持的编码</h3><pre><code>ASCII 
+
+UTF-8
+</code></pre><h3 id="Node中使用GBK编码读取文件"><a href="#Node中使用GBK编码读取文件" class="headerlink" title="Node中使用GBK编码读取文件"></a>Node中使用GBK编码读取文件</h3><pre><code>默认情况下，核心模块是没有提供GBK编码支持的，需要我们去npmjs.com 上去下载一个第三方包 iconv-lite
+
+npmjs.com类似于github，里面有很多开源的项目
+
+npm install iconv-lite --save/--save-dev
+
+--save 代表把我们这个包的信息记录在package.json
+
+--save-dev 开发阶段 gulp
+--save 生产阶段 angular angular-router
+
+
+npm install iconv-lite --save
+</code></pre><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><pre><code>项目的配置文件
+
+生成：在项目的根目录 npm init -y(默认)
+</code></pre><hr>
+<h1 id="文件和文件夹的操作"><a href="#文件和文件夹的操作" class="headerlink" title="文件和文件夹的操作"></a>文件和文件夹的操作</h1><h3 id="文件夹的操作"><a href="#文件夹的操作" class="headerlink" title="文件夹的操作"></a>文件夹的操作</h3><pre><code>创建:mkdir
+删除:rmdir
+重命名文件夹/文件 rename
+判断文件夹/文件是否存在 exists
+</code></pre><h3 id="文件的操作"><a href="#文件的操作" class="headerlink" title="文件的操作"></a>文件的操作</h3><pre><code>写入文件 writeFile
+追加文件 appendFile
+判断文件是否存在 exists
+重命名文件 rename
+删除文件 unlink
+监控文件的改变 watchFile
+</code></pre><h3 id="做一个小的demo来巩固我们文件夹和文件的操作"><a href="#做一个小的demo来巩固我们文件夹和文件的操作" class="headerlink" title="做一个小的demo来巩固我们文件夹和文件的操作"></a>做一个小的demo来巩固我们文件夹和文件的操作</h3><pre><code>我想监控abc/abc.txt，如果发现这个文件一旦更改，就将abc.txt所有的内容，写入到eee/eee.txt中去
+
+步骤:(文件的复制)
+    1、使用fs.watchFile监控源文件的更改
+    2、判断eee是否存在，不存在则创建 fs.mkdir
+    3、读取abc/abc.txt的内容 fs.readFile
+    4、将读取到的abc.txt的二进制，写入到eee/eee.txt
+
+文件剪切
+</code></pre><h3 id="es6中通过Promise来解决这个异步嵌套过多的问题"><a href="#es6中通过Promise来解决这个异步嵌套过多的问题" class="headerlink" title="es6中通过Promise来解决这个异步嵌套过多的问题"></a>es6中通过Promise来解决这个异步嵌套过多的问题</h3><pre><code>http://es6.ruanyifeng.com/#docs/promise
+
+promise对象.then(xxx)
+</code></pre><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><pre><code>1、文件夹必须得程序员自己创建
+2、文件可以不用自己创建，当往里面写内容的时候，它就会自动创建
+</code></pre><hr>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><pre><code>以调用同步方法和异步方法为例
+
+同步&amp;异步
+同步:如果我们执行的是一个同步方法，必须等着同步方法执行完毕，才能执行后面的代码
+
+异步:如果我们执行的是一个异步方法，不需要等着我们异步方法执行完毕，就可以执行后面的代码
+
+相同点:
+    调用异步&amp;同步方都可以获取结果
+
+不同点:
+    1、获取结果的方式不一样，同步通过返回值，异步通过回调函数
+
+    2、同步没有回调函数，异步会有回调函数
+
+    3、做耗时间的操作，同步会阻塞住，异步不会
+
+开发中如何去选择?
+      1、耗时间操作用异步
+      2、其它用同步,同步能保证代码的顺序
+</code></pre><hr>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><pre><code>nodemon
+
+全局第三方包,可以监控我们源代码的更改，如果我们源代码发生了更改，就可以重新运行我们.js文件
+
+安装:
+    npm i nodemon -g 
+    安装成功之后会放在我们node的安装目录下
+
+使用:
+    在终端使用，比如nodemon , nodemon 你要执行的js文件
+
+本地包&amp;全局包
+
+相同点
+    1、都要使用npm i 进行安装
+    2、都是从npmjs.com上面进行下载安装的
+
+不同点
+    1、安装方式 
+        本地包 npm i xxx --save/--save-dev
+        全局包 npm i xxx -g
+
+    2、安装的地方不一样
+        本地包，项目的node_modules
+        全局包，node安装目录或是个人目录 &gt; AppData &gt; Roaming &gt; npm
+
+    3、使用场合不一样
+        本地包:是用在项目中的，为我们项目服务的
+        全局包:在终端中使用，执行一些指令的
+</code></pre><hr>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><pre><code>参考:
+    http://javascript.ruanyifeng.com/nodejs/module.html#toc4
+</code></pre><h3 id="模块的分类"><a href="#模块的分类" class="headerlink" title="模块的分类"></a>模块的分类</h3><pre><code>1、核心模块，node本身提供的 http url querystring path fs
+
+2、第三方模块
+    先安装到我们本地项目中，再使用
+    npm安装
+
+3、自定义模块
+    给别的js文件去用
+
+
+上面三种分别是我们以后可能都会在项目中遇到的这些模块，使用都是使用CommonJS规范的require去加载
+</code></pre><h3 id="自定义模块-1"><a href="#自定义模块-1" class="headerlink" title="自定义模块"></a>自定义模块</h3><pre><code>CommonJS规范认为，一个.js文件就可以看成一个模块，如果我们想把模块中定义的变量，方法，对象给外面的js使用，就必须使用CommonJS提供module将我们需要给外面用的东西，导出去
+
+以自定义计算器为例
+</code></pre><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><pre><code>在commonjs中导入模块用 require
+在commonjs中在模块中导出 使用module.exports
+如果是自定义模块，在导入自定义模块的时候，得把路径写完整
+require导入的东西，就是别的文件modulu.exports导出的东西
+</code></pre><hr>
+
+      
+    </div>
+
+
+
+
+
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+        <div>
+          
+           <div style="text-align:center;color: #ccc;font-size:16px;">----------------全文结束，感谢您的阅读----------------</div>
+                <div style="text-align:center;color: #ccc;font-size:14px;">-------------THE END THANK YOU-------------</div>
+          
+        </div>
+
+
+    <div align="center";font-size:14px;>
+      
+        <div class="copyright">
+        <p><span>
+        <b>本文地址：</b><a href="/2016/09/11/NodeJS学习记录二/" title="NodeJs学习记录二">http://yoursite.com/2016/09/11/NodeJS学习记录二/</a><br/><b>转           载请注明出处，谢谢！</b>
+        </span></p>
+        </div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"># Node</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/10/NodeJS学习记录一/" rel="next" title="NodeJs学习记录一">
+                <i class="fa fa-chevron-left"></i> NodeJs学习记录一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/12/NodeJS学习记录三/" rel="prev" title="NodeJs学习记录三">
+                NodeJs学习记录三 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODk1NC81NTIz"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            网站概况
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zero.png"
+               alt="谢 晓 驰" />
+          <p class="site-author-name" itemprop="name">谢 晓 驰</p>
+           
+              <p class="site-description motion-element" itemprop="description">你老了，那曾经年轻的都在变老。你会说：那时的痛、缺憾、甚至背弃，都多么的好</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NodeJs-学习记录二"><span class="nav-number">1.</span> <span class="nav-text">NodeJs 学习记录二</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#QueryString"><span class="nav-number">1.1.</span> <span class="nav-text">QueryString</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GET-amp-POST"><span class="nav-number">1.2.</span> <span class="nav-text">GET&POST</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fs-amp-path"><span class="nav-number">1.3.</span> <span class="nav-text">fs&path</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#path"><span class="nav-number">1.3.1.</span> <span class="nav-text">path</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fs"><span class="nav-number">1.3.2.</span> <span class="nav-text">fs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">1.3.3.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#出现乱码的原因及解决方案"><span class="nav-number">1.4.</span> <span class="nav-text">出现乱码的原因及解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#出现乱码的原因"><span class="nav-number">1.4.1.</span> <span class="nav-text">出现乱码的原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决办法"><span class="nav-number">1.4.2.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码介绍"><span class="nav-number">1.4.3.</span> <span class="nav-text">编码介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node支持的编码"><span class="nav-number">1.4.4.</span> <span class="nav-text">Node支持的编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node中使用GBK编码读取文件"><span class="nav-number">1.4.5.</span> <span class="nav-text">Node中使用GBK编码读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">1.4.6.</span> <span class="nav-text">package.json</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件和文件夹的操作"><span class="nav-number">2.</span> <span class="nav-text">文件和文件夹的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件夹的操作"><span class="nav-number">2.0.1.</span> <span class="nav-text">文件夹的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件的操作"><span class="nav-number">2.0.2.</span> <span class="nav-text">文件的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做一个小的demo来巩固我们文件夹和文件的操作"><span class="nav-number">2.0.3.</span> <span class="nav-text">做一个小的demo来巩固我们文件夹和文件的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es6中通过Promise来解决这个异步嵌套过多的问题"><span class="nav-number">2.0.4.</span> <span class="nav-text">es6中通过Promise来解决这个异步嵌套过多的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">2.0.5.</span> <span class="nav-text">注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步和异步"><span class="nav-number">2.1.</span> <span class="nav-text">同步和异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它"><span class="nav-number">2.2.</span> <span class="nav-text">其它</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义模块"><span class="nav-number">2.3.</span> <span class="nav-text">自定义模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模块的分类"><span class="nav-number">2.3.1.</span> <span class="nav-text">模块的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义模块-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">自定义模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意点"><span class="nav-number">2.3.3.</span> <span class="nav-text">注意点</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢 晓 驰</span>
+</div>
+
+
+<div class="powered-by">
+    有心为善  虽善不善
+</div>
+
+<div class="theme-info">
+  无心作恶  虽恶不罚
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

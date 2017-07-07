@@ -1,0 +1,1203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>码诗园</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-07-05T09:05:27.532Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>谢 晓 驰</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>第三方登录服务</title>
+    <link href="http://yoursite.com/2016/10/27/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
+    <id>http://yoursite.com/2016/10/27/第三方登录服务使用心得/</id>
+    <published>2016-10-27T12:24:42.000Z</published>
+    <updated>2017-07-05T09:05:27.532Z</updated>
+    
+    <content type="html"><![CDATA[<p>###第三方登录服务的使用心得<br><a id="more"></a></p>
+<p>####前提:<br>1、去微博、微信、QQ开发者中心去注册成为他的开发者 <a href="http://open.weibo.com/" target="_blank" rel="external">http://open.weibo.com/</a></p>
+<p>2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息</p>
+<p>####正式接入:<br>1、去下载它的sdk，就是一个/多个js文件(有点类似于下载jQuery.js)</p>
+<p>2、导入到你的项目中，一般都是导入一个js文件，一般都是CDN导入</p>
+<p>3、调用它里面特定的接口(比如登录)</p>
+<p>给接口传递一些必要的参数，例如：<br>weiboLogin(‘2257804123’,’afasfaf’)<br>$(“#xxId”)<br>​<br>4、等用户同意给我们应用授权授权之后，就可以拿到用户在开放平台(微博，微信)的信息了<br>​<br>昵称、头像、好友关系<br>​<br>5、把上一步获取到的用户的信息传递给后台，后台得存着(把微博用户的信息和我们自己App的账号平台关联起来)</p>
+<p>####建议:<br>首先把流程必须弄清楚，第二，到时候再需要做这个功能的时候，再去看文档，看最新的文档，因为这些开发平台的文档在变，每一个大的版本都会发生改变</p>
+<p>####平台参考链接<br><a href="http://open.weibo.com/authentication" target="_blank" rel="external">微博登陆点这里</a><br><a href="https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&amp;t=resource/res_list&amp;verify=1&amp;id=open1419316505&amp;token=&amp;lang=zh_CN" target="_blank" rel="external">微信登陆点这里</a><br><a href="http://wiki.connect.qq.com/%E7%BD%91%E7%AB%99%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B" target="_blank" rel="external">QQ登陆点这里</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;###第三方登录服务的使用心得&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xTemplate模板实例参考</title>
+    <link href="http://yoursite.com/2016/09/18/xTemplate%E6%A8%A1%E6%9D%BF%E8%AF%AD%E5%8F%A5%E5%8F%82%E8%80%83/"/>
+    <id>http://yoursite.com/2016/09/18/xTemplate模板语句参考/</id>
+    <published>2016-09-18T13:02:41.000Z</published>
+    <updated>2017-07-07T01:46:06.216Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="xTemplate模板实例参考"><a href="#xTemplate模板实例参考" class="headerlink" title="xTemplate模板实例参考"></a>xTemplate模板实例参考</h3><a id="more"></a>
+<p>XTemplate是易学易懂的模板语言</p>
+<p>####直接来看这个模板实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Hello &#123;&#123;name&#125;&#125;</div><div class="line">You have just won $&#123;&#123;value&#125;&#125;!</div><div class="line">&#123;&#123;#if data&#125;&#125;</div><div class="line">    &#123;&#123;#each data&#125;&#125;</div><div class="line">        &#123;&#123;name&#125;&#125;-&#123;&#123;xindex&#125;&#125;/&#123;&#123;xcount&#125;&#125;</div><div class="line">    &#123;&#123;/each&#125;&#125;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
+<pre><code>对应要填充的JSON：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	name:&apos;Kissy&apos;,</div><div class="line">	value:&apos;10000&apos;,</div><div class="line">	data:[</div><div class="line">		&#123;name:1&#125;,</div><div class="line">		&#123;name:2&#125;</div><div class="line">	]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是输出结果</p>
+<figure class="highlight plain"><figcaption><span>Kissy You have just won    $10000!    1-0/2 2-1/2 ```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这时循环内的 &#123;&#123;xindex&#125;&#125; 表示循环的索引值， &#123;&#123;xcount&#125;&#125; 表示循环的总次数， &#123;&#123;name&#125;&#125; 是数组中每个对象的属性 name ，替换为属性的值，这里name使用this也是可以的，this表示循环的每一个item。</div><div class="line"></div><div class="line">#### each中数据层次相对位置的访问</div><div class="line"></div><div class="line">循环体内可以获取JSON对象上的其他属性，同过相对位置写法获得，比如这段XTemplate：</div><div class="line"></div><div class="line">&#123;&#123;#each data&#125;&#125;</div><div class="line">    &#123;&#123;this&#125;&#125;-&#123;&#123;../total&#125;&#125;</div><div class="line">&#123;&#123;/each&#125;&#125;</div><div class="line"></div><div class="line">要填充的JSON对象为：</div><div class="line"></div><div class="line">&#123;</div><div class="line">    data: [1, 2],</div><div class="line">    total: 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">填充结果为：</div><div class="line"></div><div class="line">1-3 2-3</div><div class="line"></div><div class="line">#### 在Node中使用</div><div class="line"></div><div class="line">1. npm  i   xtpl xtemplate --save</div><div class="line"></div><div class="line">2. js 导入包  const xtpl = require(&apos;xtpl&apos;)</div><div class="line"></div><div class="line">3. 使用</div></pre></td></tr></table></figure>
+<p>xtpl.renderFile(    //使用模板读取数据文件渲染<br>path.join(__dirname,’list.html’),//文件路径这里使用path服务<br>{array:datas},   //这是数据<br>(err,content)=&gt;{res.send(content)//ES6语法 回调函数，做你想做得事<br>                                 //这里使用send的是用的express服务<br>   })<br>```</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;xTemplate模板实例参考&quot;&gt;&lt;a href=&quot;#xTemplate模板实例参考&quot; class=&quot;headerlink&quot; title=&quot;xTemplate模板实例参考&quot;&gt;&lt;/a&gt;xTemplate模板实例参考&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="模板引擎" scheme="http://yoursite.com/categories/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"/>
+    
+    
+      <category term="xTemplate" scheme="http://yoursite.com/tags/xTemplate/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mongodb数据库</title>
+    <link href="http://yoursite.com/2016/09/15/mongodb%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2016/09/15/mongodb学习/</id>
+    <published>2016-09-15T14:20:40.000Z</published>
+    <updated>2017-07-05T09:04:23.726Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mongodb数据库"><a href="#mongodb数据库" class="headerlink" title="mongodb数据库"></a>mongodb数据库</h2><a id="more"></a>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><pre><code>保存数据的仓库，数据库本质也是一个文件，只是说和普通的文件不太一样，他有自己的存储规则，让保存数据和查询数据更加方便
+</code></pre><p>###存储文件的介质<br>    localStorage 文本文件</p>
+<pre><code>如何在代码中对的localStorage
+想往localStorage中增加或是查找一条数据
+
+大型数据或是海量数据的时候必须要用到数据库
+</code></pre><h3 id="数据库的分类"><a href="#数据库的分类" class="headerlink" title="数据库的分类"></a>数据库的分类</h3><pre><code>客户端：
+    iOS/Android/前端
+    iOS/Android SQLite 在iOS/Android存储App的数据
+
+服务端：
+    关系型数据库
+        部门---员工   
+    非关系型数据库
+        JSON对象的形式来存储
+        MongoDB 
+        Redis
+        Memcached 
+</code></pre><h3 id="数据库的作用"><a href="#数据库的作用" class="headerlink" title="数据库的作用"></a>数据库的作用</h3><pre><code>1、保存应用程序产生的数据(用户注册数据，用户的个人信息等等)
+2、当应用程序需要数据的时候，提供给应用程序去展示
+</code></pre><hr>
+<h3 id="安装mongodb服务端"><a href="#安装mongodb服务端" class="headerlink" title="安装mongodb服务端"></a>安装mongodb服务端</h3><pre><code>步骤：
+    1、安装mongodb服务端软件
+    2、设置mongodb的环境变量，重启终端验证 mongo -version
+    3、建立一个文件夹，用来存储mongodb数据库产生的数据(建议放在C盘根目录 mongodb_datas)
+    4、启动
+        mongod --dbpath c:/mongodb_datas
+</code></pre><h3 id="启动服务端有几种方式"><a href="#启动服务端有几种方式" class="headerlink" title="启动服务端有几种方式"></a>启动服务端有几种方式</h3><pre><code>1、方式一，直接在cmd中输入 mongod --dbpath c:/mongodb_datas 
+    32位: mongod --dbpath c:/mongodb_datas --journal --storageEngine=mmapv1
+
+2、方式二，可以把 mongod --dbpath c:/mongodb_datas 做成一个批处理文件
+    32位: mongod --dbpath c:/mongodb_datas --journal --storageEngine=mmapv1
+
+3、方式三，做成开机启动命令
+    1、在c:/mongodb_datas下面建议一个文件夹server_log，再在这个文件夹下面建立一个mongodb.log
+    2、以管理员的身份启动终端
+64位运行
+        mongod.exe --bind_ip 127.0.0.1 --logpath &quot;C:/mongodb_datas/server_log/mongodb.log&quot; --logappend --dbpath &quot;c:/mongodb_datas&quot; --port 27017 --serviceName &quot;MongoDBServer&quot; --serviceDisplayName &quot;MongoDBServerDisplayName&quot; --install
+
+32位
+    mongod.exe --bind_ip 127.0.0.1 --logpath &quot;C:/mongodb_datas/server_log/mongodb.log&quot; --logappend --dbpath &quot;c:/mongodb_datas&quot; --journal --storageEngine=mmapv1  --port 27017 --serviceName &quot;MongoDBServer&quot; --serviceDisplayName &quot;MongoDBServerDisplayName&quot; --install
+
+
+    3、在任务管理器中找到MongoDBServer  开启运行
+</code></pre><h2 id="使用robomongo这个小机器人来操作的数据库中的数据"><a href="#使用robomongo这个小机器人来操作的数据库中的数据" class="headerlink" title="使用robomongo这个小机器人来操作的数据库中的数据"></a>使用robomongo这个小机器人来操作的数据库中的数据</h2><pre><code>步骤:
+    1、连接到mongodb数据库服务端，并且连接成功之后，服务端会给返回一个操作数据库的db对象
+
+    2、拿着上一步返回的db对象，对mongodb数据库中的数据进行操作了
+
+连接成功之后，要来操作数据的话
+    1、创建一个数据库 (相当于在excel中创建空白工作簿)
+    2、创建集合 (相当于在excel创建工作表单)
+        数据的一个集合，把相关联的数据放在一个集合中
+    3、确立表头，插入数据、删除数据、修改数据、查询数据
+</code></pre><h2 id="MongoDB数据库中的概念"><a href="#MongoDB数据库中的概念" class="headerlink" title="MongoDB数据库中的概念"></a>MongoDB数据库中的概念</h2><pre><code>数据库 ： 一个App中对应一个数据库
+
+集合：相当于Excel中表单，一堆数据的集合，相关联的数据，会放在一个集合中，必须学生相关的数据，放在学生集合中，商品相关的数据，放入一个商品集合中
+
+文档：相当于excel中的每一行数据
+
+一个数据中可以有多个集合(学生集合、食品集合)
+一个集合可以有多条文档(多条数据)
+</code></pre><h2 id="REPL-NodeJS中-如何操作mongodb数据库中的数据【重点】"><a href="#REPL-NodeJS中-如何操作mongodb数据库中的数据【重点】" class="headerlink" title="REPL(NodeJS中)如何操作mongodb数据库中的数据【重点】"></a>REPL(NodeJS中)如何操作mongodb数据库中的数据【重点】</h2><pre><code>注意:因为mongodb不光只有nodejs能操作，java,php,.net都可以操作它里面的数据
+
+一般通过NodeJS,java,php等操作mongodb数据库中的数据的时候，不会在程序运行阶段去创建数据库和集合
+
+一般创建数据库和创建集合在后台人员刚开始编码之前就已经创建好了，在大公司里面会有专门的DBA来进行创建数据库和集合
+</code></pre><h2 id="NodeJS中操作mongodb数据库中的数据"><a href="#NodeJS中操作mongodb数据库中的数据" class="headerlink" title="NodeJS中操作mongodb数据库中的数据"></a>NodeJS中操作mongodb数据库中的数据</h2><pre><code>mongodb : https://www.npmjs.com/package/mongodb
+
+思路:
+    1、连接到mongodb服务端，连接成功之后，服务端会返回一个db对象
+    2、拿着这个服务端返回的db对象，操作数据库中的数据(操作szhmqd06数据库中的foodInfo中的数据)
+前提:
+    必须启动mongodb服务端
+具体代码步骤:
+    1、安装mongodb第三方包
+        npm install mongodb --save
+    2、导入
+    3、根据文档写代码
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;mongodb数据库&quot;&gt;&lt;a href=&quot;#mongodb数据库&quot; class=&quot;headerlink&quot; title=&quot;mongodb数据库&quot;&gt;&lt;/a&gt;mongodb数据库&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NodeJs学习记录四</title>
+    <link href="http://yoursite.com/2016/09/14/Node%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E5%9B%9B/"/>
+    <id>http://yoursite.com/2016/09/14/Node学习记录四/</id>
+    <published>2016-09-14T13:30:56.000Z</published>
+    <updated>2017-07-05T09:02:59.565Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h2><a id="more"></a>
+<h3 id="前端参与的开发方式，大概两种"><a href="#前端参与的开发方式，大概两种" class="headerlink" title="前端参与的开发方式，大概两种"></a>前端参与的开发方式，大概两种</h3><pre><code>1、服务器端渲染，只需要负责写那些静态页面即可(写一些模版的语法)
+
+2、前后端分离【主流趋势】
+</code></pre><h3 id="服务器端渲染的流程"><a href="#服务器端渲染的流程" class="headerlink" title="服务器端渲染的流程"></a>服务器端渲染的流程</h3><pre><code>1、监听浏览器的请求，明白浏览器的意图 判断的url中是否包含类似于index.html等等
+2、根据浏览器的意图，去服务器硬盘上面找到对应资源(html,css,js,xxx)
+3、根据需要去数据库中获取相应的数据
+4、把数据和页面(html)生成一个完整的网页(借助xtpl&amp;xtemplate来操作)
+5、把生成好的完整的网页返回给浏览器，浏览器只需要负责解析渲染出来
+</code></pre><h3 id="xtpl-amp-xtemplate结合起来实现服务器端渲染"><a href="#xtpl-amp-xtemplate结合起来实现服务器端渲染" class="headerlink" title="xtpl&amp;xtemplate结合起来实现服务器端渲染"></a>xtpl&amp;xtemplate结合起来实现服务器端渲染</h3><p>   xtemplate : 在页面中写那些占位的模版语法<br>   xtpl : 在nodejs后台开启web服务的js文件中，利用真实的数据替换模版中的占位符，最终得到完整的html页面    </p>
+<pre><code>document ---&gt; jQuery
+</code></pre><hr>
+<h2 id="Express-这个挺重要的"><a href="#Express-这个挺重要的" class="headerlink" title="Express  这个挺重要的"></a>Express  这个挺重要的</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>它是对HTTP封装，用来简化网络功能那一块
+
+官网:http://www.expressjs.com.cn/
+
+官方解释:
+    基于 Node.js 平台，快速、开放、极简的 web 开发框架。
+</code></pre><h2 id="学习最终的几点"><a href="#学习最终的几点" class="headerlink" title="学习最终的几点"></a>学习最终的几点</h2><p>   1、如何去接收GET/POST传递过来的参数</p>
+<p>   2、如何通过Express进行分门别类的处理路由</p>
+<p>   3、静态资源的处理</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre><code>步骤:
+    1、导入包
+
+    2、创建一个app
+
+    3、请求处理响应
+
+    4、开启web服务，开始监听
+
+2、获取GET/POST参数
+    GET参数：登录 http://127.0.0.1:3000/login?username=zhangsan&amp;pwd=123
+
+    可以直接在的req.query中就可以获取了
+
+    POST参数：因为express没有直接提供获取POST参数的方法，需要借助一个第三方包 body-parser
+    参考:
+        https://www.npmjs.com/package/body-parser
+    步骤:
+        1、npm install body-parser --save
+        2、导包
+        3、实现某些方法
+
+        最后通过req.body即可以获取到post提交过来的参数
+</code></pre><h2 id="路由处理"><a href="#路由处理" class="headerlink" title="路由处理"></a>路由处理</h2><pre><code>前端路由:
+    作用:当触发了某个超链接之后，根据路由的配置，决定跳转到哪个页面，最终将这个页面呈现出来
+
+后台的路由
+    作用:就是用来分门别类的出路用户发送过来的请求
+
+    http://127.0.0.1:3000/login
+    http://127.0.0.1:3000/register
+
+    http://127.0.0.1:3000/getGoodsList
+    http://127.0.0.1:3000/getGoodsInfo
+
+    jd购物
+    男士:(专门创建一个man.js文件来实现男士区域商品的请求)
+        http://www.jd.com/man/xz
+        http://www.jd.com/man/ld
+        http://www.jd.com/man/px
+
+    女士:(专门创建一个girl.js文件来实现女士区域商品的请求)
+        http://www.jd.com/girl/xs
+        http://www.jd.com/girl/bag
+        http://www.jd.com/girl/kh
+
+express中代码实现?
+    步骤:
+        1、先要创建一个单独的路由(js文件)，来处理某一类请求下面的所有用户请求，并且需要导出去
+            1.1 导入包 express
+            1.2 创建一个路由对象 
+                const manRouter = express.Router()
+            1.3 在具体的路由js中处理属于该文件的路由
+                manRouter.get(xxx)
+                manRouter.post(xxx)
+            1.4 将上面创建的路由对象导出去，在入口文件中使用
+
+        2、在入口文件中，导入的路由文件，并且使用就可以了
+                //导入路由文件
+                const manRouter = require(path.join(__dirname,&quot;man/manRouter.js&quot;))
+
+                //在入口文件中使用
+                app.use(&apos;/man&apos;,manRouter)
+</code></pre><h2 id="Express中静态资源的处理"><a href="#Express中静态资源的处理" class="headerlink" title="Express中静态资源的处理"></a>Express中静态资源的处理</h2><pre><code>Express希望对后台静态资源处理，达到简单的目的，然后只希望程序员写一句话就能搞定
+
+步骤:
+    1、在入口文件中设置静态资源的根目录
+        注意点:一定要在路由处理之前设置
+            app.use(express.static(path.join(__dirname,&apos;statics&apos;)))
+    2、在的页面中，按照Express的规则来请求后台静态资源数据
+        写link的href,script的src写的时候，除开静态资源根路径之外，按照他在服务器上面的路径规则写
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;服务端渲染&quot;&gt;&lt;a href=&quot;#服务端渲染&quot; class=&quot;headerlink&quot; title=&quot;服务端渲染&quot;&gt;&lt;/a&gt;服务端渲染&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NodeJs学习记录三</title>
+    <link href="http://yoursite.com/2016/09/12/NodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%89/"/>
+    <id>http://yoursite.com/2016/09/12/NodeJS学习记录三/</id>
+    <published>2016-09-12T14:09:29.000Z</published>
+    <updated>2017-07-05T09:01:36.532Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJs学习记录三"><a href="#NodeJs学习记录三" class="headerlink" title="NodeJs学习记录三"></a>NodeJs学习记录三</h1><a id="more"></a>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><h3 id="模块的分类"><a href="#模块的分类" class="headerlink" title="模块的分类"></a>模块的分类</h3><pre><code>核心模块(包)
+
+第三方模块(包)
+    npmjs.com
+
+自定义模块(包)
+    淘宝开源:http://code.taobao.org
+
+注意点:
+    在使用require引入模块的时候，核心模块和第三方模块，写上名字即可
+
+    如果是自定义模块，写上全路径
+</code></pre><h3 id="如何去自定义模块"><a href="#如何去自定义模块" class="headerlink" title="如何去自定义模块"></a>如何去自定义模块</h3><pre><code>自执行函数
+
+(function($){
+    xxx:xxx
+})(jQuery)
+
+AMD:requireJS
+#define([..,..],function($,xxx){
+
+})
+
+CommonJS
+    引入： require(&apos;核心/第三方/自定义模块&apos;)
+
+    暴露,导出 : module.exports = {}
+</code></pre><h3 id="把写好的自定义模块发布到npmjs上面去"><a href="#把写好的自定义模块发布到npmjs上面去" class="headerlink" title="把写好的自定义模块发布到npmjs上面去"></a>把写好的自定义模块发布到npmjs上面去</h3><pre><code>前提准备:
+    1、把我们要上传上去的自定义模块，按照npmjs的要求进行完善
+        package.json(描述我们自己写的这个自定义模块)
+
+        如果要想正确发布到npmjs.com这个时候，完善package.json中的内容，详见下一章节
+
+    2、注册npmjs.com的账号
+
+发布到npmjs.com【网速还是要可以】
+    使用npm指令发布，在终端里面操作
+
+    步骤:
+        1、要让终端连接上我们npmjs.com
+            npm adduser，会提示让你输入用户名，密码，邮箱
+
+        2、发布
+            npm publish
+
+        3、升级
+            1、改代码，一定要把版本号递增（不能减少）
+
+        4、撤销
+            npm unpublish szhmqd06calc@2.1.0
+
+            npm unpublish 包的名称@版本号
+
+注意事项:
+    1、必须在我们项目根目录下面，在进行操作
+    2、在任何终端里面输入密码都是没有提示的，输完之后，按回车即可
+    3、每次升级一定要对版本号进行递增，大的版本迭代，更改一个大版本号，如果是小版本修复，就写上小的版本号
+</code></pre><h3 id="发布自定义模块到npmjs-com的时候，package-json的配置"><a href="#发布自定义模块到npmjs-com的时候，package-json的配置" class="headerlink" title="发布自定义模块到npmjs.com的时候，package.json的配置"></a>发布自定义模块到npmjs.com的时候，package.json的配置</h3><pre><code>步骤:
+    1、在项目的根目录下，使用npm init 或是 npm init -y 来生成一个package.json
+</code></pre><h3 id="下载第三方包的途径补充"><a href="#下载第三方包的途径补充" class="headerlink" title="下载第三方包的途径补充"></a>下载第三方包的途径补充</h3><pre><code>平时下载第三方包:
+    npm i/install 包名称 --save-dev/--save
+
+http://npm.taobao.org/
+
+因为我们有时候去npmjs.com上面下载第三方包可能比较慢，这个时候我们就可以考虑从国内的淘宝服务器上面去下载
+
+前提:
+    1、安装nrm 用来切换镜像 `npm i nrm -g`
+        nrm ls 看当前有哪些镜像可用
+        nrm use 镜像名称，切换镜像
+
+    2、安装cnpm 这个全局包，用来从http://npm.taobao.org/下载第三方包
+            npm i cnpm -g
+
+使用:
+    在项目根目录下，使用cnpm i 包名 --save，来使用
+
+开发建议：
+    喜欢从npmjs.com上面下载，网速好，建议还是从npmjs.com上面去下载
+</code></pre><hr>
+<h2 id="服务器端渲染-服务器端动态生成网页"><a href="#服务器端渲染-服务器端动态生成网页" class="headerlink" title="服务器端渲染(服务器端动态生成网页)"></a>服务器端渲染(服务器端动态生成网页)</h2><h3 id="demo1"><a href="#demo1" class="headerlink" title="demo1"></a>demo1</h3><pre><code>当在浏览器中输入 http://127.0.0.1:5555/index.html    把 首页 返回 给你
+</code></pre><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//HTML的代码</div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"/abc.css"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">        &#123;&#123;#each(array)&#125;&#125;</div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;this&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        &#123;&#123;/each&#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//这是js文件的代码</span></div><div class="line"><span class="comment">//导入包</span></div><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</div><div class="line"><span class="keyword">const</span> fs   = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"><span class="keyword">const</span> xtpl = <span class="built_in">require</span>(<span class="string">'xtpl'</span>)</div><div class="line"></div><div class="line"><span class="comment">//创建server</span></div><div class="line"><span class="keyword">const</span> server = http.createServer()</div><div class="line"></div><div class="line"><span class="keyword">const</span> datas = <span class="built_in">require</span>(path.join(__dirname,<span class="string">'datas.json'</span>))</div><div class="line"></div><div class="line"><span class="comment">//监听请求，进行处理，响应给浏览器</span></div><div class="line">server.on(<span class="string">'request'</span>,(req,res)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(req.url.includes(<span class="string">'index'</span>))&#123;</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 参数1：你要进行替换生成的页面(内部封装了fs)</div><div class="line">         * 参数2：在页面中替换时候，需要的真实数据的属性名称和值</div><div class="line">         * 参数3：回调，渲染完毕之后的结果</div><div class="line">         */</div><div class="line">        xtpl.renderFile(path.join(__dirname,<span class="string">'index.html'</span>),&#123;</div><div class="line">            <span class="attr">array</span>:datas</div><div class="line">        &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">error,content</span>)</span>&#123;</div><div class="line">            res.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/html;charset=utf-8"</span>)</div><div class="line">            res.end(content)</div><div class="line">        &#125;)</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(req.url.includes(<span class="string">"abc.css"</span>))&#123;</div><div class="line">        fs.readFile(path.join(__dirname,<span class="string">'site.css'</span>),(err,data)=&gt;&#123;</div><div class="line">            <span class="comment">//文件的mimeType</span></div><div class="line">            res.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/css;charset=utf-8"</span>)</div><div class="line">            res.end(data)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;)</div><div class="line"><span class="comment">//开启web服务</span></div><div class="line">server.listen(<span class="number">5555</span>,<span class="string">'127.0.0.1'</span>,(err)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">        <span class="built_in">console</span>.log(err)</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"start success"</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NodeJs学习记录三&quot;&gt;&lt;a href=&quot;#NodeJs学习记录三&quot; class=&quot;headerlink&quot; title=&quot;NodeJs学习记录三&quot;&gt;&lt;/a&gt;NodeJs学习记录三&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NodeJs学习记录二</title>
+    <link href="http://yoursite.com/2016/09/11/NodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%BA%8C/"/>
+    <id>http://yoursite.com/2016/09/11/NodeJS学习记录二/</id>
+    <published>2016-09-11T15:20:02.000Z</published>
+    <updated>2017-07-05T08:11:15.174Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJs-学习记录二"><a href="#NodeJs-学习记录二" class="headerlink" title="NodeJs 学习记录二"></a>NodeJs 学习记录二</h1><a id="more"></a>
+<hr>
+<h2 id="QueryString"><a href="#QueryString" class="headerlink" title="QueryString"></a>QueryString</h2><pre><code>作用:
+    将GET/POST传递过来的参数，进行解析
+    GET : ?username=zhangsan&amp;pwd=123
+    POST : username=zhangsan&amp;pwd=123
+
+使用:
+    const querystring = require(&apos;querystring&apos;)
+
+    const paramsObj = querystring.parse(键值对的字符串)
+</code></pre><hr>
+<h2 id="GET-amp-POST"><a href="#GET-amp-POST" class="headerlink" title="GET&amp;POST"></a>GET&amp;POST</h2><pre><code>相同点:
+    都是HTTP协议的方法
+    都能传递参数给服务器
+
+不同点:
+    1、传参的方式不一样
+        GET 放在路径后面 ?开始，后面键值对
+        POST 放在请求体 键值对的方式
+
+    2、传参的限制不一样
+        GET 2048
+        POST 2M
+
+    3、GET有缓存，POST没有
+
+    4、GET传参不安全，POST相对安全
+
+开发中的建议
+    如果只是单纯的获取数据，就用GET，因为GET有缓存效率高
+
+    如果是要向服务器提交数据，就用POST
+</code></pre><hr>
+<h2 id="fs-amp-path"><a href="#fs-amp-path" class="headerlink" title="fs&amp;path"></a>fs&amp;path</h2><h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><pre><code>作用：获取路径
+
+path.join(__dirname,&apos;你要读取的文件夹下面的文件名称即可&apos;)
+
+__dirname全局属性，代表当前文件所在的文件夹路径
+
+path.join会自动判断文件的路径，并且给他加上`/`
+</code></pre><h3 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h3><pre><code>作用:读取服务器硬盘上面的某一个文件(操作文件)
+
+fs.readFile ： 异步读取服务器硬盘上面的某一个文件
+</code></pre><hr>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><pre><code>fs:node去读取服务器硬盘中的文件(操作文件)
+
+path:获取文件的路径
+
+上面两个基本上配合起来用
+</code></pre><hr>
+<h2 id="出现乱码的原因及解决方案"><a href="#出现乱码的原因及解决方案" class="headerlink" title="出现乱码的原因及解决方案"></a>出现乱码的原因及解决方案</h2><h3 id="出现乱码的原因"><a href="#出现乱码的原因" class="headerlink" title="出现乱码的原因"></a>出现乱码的原因</h3><pre><code>我们文件在写入和读取的时候，编码不一致，造成的问题
+</code></pre><h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><pre><code>文件在写入与读取的时候，要保持编码一致，并且用UTF-8 Android
+</code></pre><h3 id="编码介绍"><a href="#编码介绍" class="headerlink" title="编码介绍"></a>编码介绍</h3><pre><code>ASCII 键盘上看到了
+ISO-8859-1 欧洲计算机协会整的
+韩语 xxx
+中国 GB2312 5000汉字
+     GBK 2万个汉字    
+
+大五码：台湾，香港 繁体中文
+
+日语 
+    片假名，平假名
+
+UTF-8 包含世界上所有国家最常用的文字，统一
+</code></pre><h3 id="Node支持的编码"><a href="#Node支持的编码" class="headerlink" title="Node支持的编码"></a>Node支持的编码</h3><pre><code>ASCII 
+
+UTF-8
+</code></pre><h3 id="Node中使用GBK编码读取文件"><a href="#Node中使用GBK编码读取文件" class="headerlink" title="Node中使用GBK编码读取文件"></a>Node中使用GBK编码读取文件</h3><pre><code>默认情况下，核心模块是没有提供GBK编码支持的，需要我们去npmjs.com 上去下载一个第三方包 iconv-lite
+
+npmjs.com类似于github，里面有很多开源的项目
+
+npm install iconv-lite --save/--save-dev
+
+--save 代表把我们这个包的信息记录在package.json
+
+--save-dev 开发阶段 gulp
+--save 生产阶段 angular angular-router
+
+
+npm install iconv-lite --save
+</code></pre><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><pre><code>项目的配置文件
+
+生成：在项目的根目录 npm init -y(默认)
+</code></pre><hr>
+<h1 id="文件和文件夹的操作"><a href="#文件和文件夹的操作" class="headerlink" title="文件和文件夹的操作"></a>文件和文件夹的操作</h1><h3 id="文件夹的操作"><a href="#文件夹的操作" class="headerlink" title="文件夹的操作"></a>文件夹的操作</h3><pre><code>创建:mkdir
+删除:rmdir
+重命名文件夹/文件 rename
+判断文件夹/文件是否存在 exists
+</code></pre><h3 id="文件的操作"><a href="#文件的操作" class="headerlink" title="文件的操作"></a>文件的操作</h3><pre><code>写入文件 writeFile
+追加文件 appendFile
+判断文件是否存在 exists
+重命名文件 rename
+删除文件 unlink
+监控文件的改变 watchFile
+</code></pre><h3 id="做一个小的demo来巩固我们文件夹和文件的操作"><a href="#做一个小的demo来巩固我们文件夹和文件的操作" class="headerlink" title="做一个小的demo来巩固我们文件夹和文件的操作"></a>做一个小的demo来巩固我们文件夹和文件的操作</h3><pre><code>我想监控abc/abc.txt，如果发现这个文件一旦更改，就将abc.txt所有的内容，写入到eee/eee.txt中去
+
+步骤:(文件的复制)
+    1、使用fs.watchFile监控源文件的更改
+    2、判断eee是否存在，不存在则创建 fs.mkdir
+    3、读取abc/abc.txt的内容 fs.readFile
+    4、将读取到的abc.txt的二进制，写入到eee/eee.txt
+
+文件剪切
+</code></pre><h3 id="es6中通过Promise来解决这个异步嵌套过多的问题"><a href="#es6中通过Promise来解决这个异步嵌套过多的问题" class="headerlink" title="es6中通过Promise来解决这个异步嵌套过多的问题"></a>es6中通过Promise来解决这个异步嵌套过多的问题</h3><pre><code>http://es6.ruanyifeng.com/#docs/promise
+
+promise对象.then(xxx)
+</code></pre><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><pre><code>1、文件夹必须得程序员自己创建
+2、文件可以不用自己创建，当往里面写内容的时候，它就会自动创建
+</code></pre><hr>
+<h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><pre><code>以调用同步方法和异步方法为例
+
+同步&amp;异步
+同步:如果我们执行的是一个同步方法，必须等着同步方法执行完毕，才能执行后面的代码
+
+异步:如果我们执行的是一个异步方法，不需要等着我们异步方法执行完毕，就可以执行后面的代码
+
+相同点:
+    调用异步&amp;同步方都可以获取结果
+
+不同点:
+    1、获取结果的方式不一样，同步通过返回值，异步通过回调函数
+
+    2、同步没有回调函数，异步会有回调函数
+
+    3、做耗时间的操作，同步会阻塞住，异步不会
+
+开发中如何去选择?
+      1、耗时间操作用异步
+      2、其它用同步,同步能保证代码的顺序
+</code></pre><hr>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><pre><code>nodemon
+
+全局第三方包,可以监控我们源代码的更改，如果我们源代码发生了更改，就可以重新运行我们.js文件
+
+安装:
+    npm i nodemon -g 
+    安装成功之后会放在我们node的安装目录下
+
+使用:
+    在终端使用，比如nodemon , nodemon 你要执行的js文件
+
+本地包&amp;全局包
+
+相同点
+    1、都要使用npm i 进行安装
+    2、都是从npmjs.com上面进行下载安装的
+
+不同点
+    1、安装方式 
+        本地包 npm i xxx --save/--save-dev
+        全局包 npm i xxx -g
+
+    2、安装的地方不一样
+        本地包，项目的node_modules
+        全局包，node安装目录或是个人目录 &gt; AppData &gt; Roaming &gt; npm
+
+    3、使用场合不一样
+        本地包:是用在项目中的，为我们项目服务的
+        全局包:在终端中使用，执行一些指令的
+</code></pre><hr>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><pre><code>参考:
+    http://javascript.ruanyifeng.com/nodejs/module.html#toc4
+</code></pre><h3 id="模块的分类"><a href="#模块的分类" class="headerlink" title="模块的分类"></a>模块的分类</h3><pre><code>1、核心模块，node本身提供的 http url querystring path fs
+
+2、第三方模块
+    先安装到我们本地项目中，再使用
+    npm安装
+
+3、自定义模块
+    给别的js文件去用
+
+
+上面三种分别是我们以后可能都会在项目中遇到的这些模块，使用都是使用CommonJS规范的require去加载
+</code></pre><h3 id="自定义模块-1"><a href="#自定义模块-1" class="headerlink" title="自定义模块"></a>自定义模块</h3><pre><code>CommonJS规范认为，一个.js文件就可以看成一个模块，如果我们想把模块中定义的变量，方法，对象给外面的js使用，就必须使用CommonJS提供module将我们需要给外面用的东西，导出去
+
+以自定义计算器为例
+</code></pre><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><pre><code>在commonjs中导入模块用 require
+在commonjs中在模块中导出 使用module.exports
+如果是自定义模块，在导入自定义模块的时候，得把路径写完整
+require导入的东西，就是别的文件modulu.exports导出的东西
+</code></pre><hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NodeJs-学习记录二&quot;&gt;&lt;a href=&quot;#NodeJs-学习记录二&quot; class=&quot;headerlink&quot; title=&quot;NodeJs 学习记录二&quot;&gt;&lt;/a&gt;NodeJs 学习记录二&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NodeJs学习记录一</title>
+    <link href="http://yoursite.com/2016/09/10/NodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
+    <id>http://yoursite.com/2016/09/10/NodeJS学习记录一/</id>
+    <published>2016-09-10T11:10:20.000Z</published>
+    <updated>2017-07-05T08:43:07.529Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="NodeJS的基本概念"><a href="#NodeJS的基本概念" class="headerlink" title="NodeJS的基本概念"></a>NodeJS的基本概念</h1><h2 id="NodeJS是什么？"><a href="#NodeJS是什么？" class="headerlink" title="NodeJS是什么？"></a>NodeJS是什么？</h2><a id="more"></a>
+<p>​       <a href="https://nodejs.org/en/" target="_blank" rel="external">Node官网</a><br>    官网介绍：<br>    Node.js® is a JavaScript runtime built on<br>    Chrome’s V8 JavaScript engine. Node.js uses<br>    an event-driven, non-blocking I/O model that<br>    makes it lightweight and efficient. Node.js’<br>    package ecosystem, npm, is the largest<br>    ecosystem of open source libraries in the<br>    world.</p>
+<pre><code>js能做什么事?
+    js ---&gt; 浏览器中运行(面向过程---&gt;面向对象)
+    js ---&gt; 后台开发
+
+NodeJS就是使用js代码，来做后台开发
+使用NodeJS可以开启一个Web服务，给浏览器提供数据去
+展示，并且接收浏览器提交过来的用户产生的数据，存储
+到数据库中，方便后面使用(注册)
+</code></pre><h2 id="NodeJS能做什么？"><a href="#NodeJS能做什么？" class="headerlink" title="NodeJS能做什么？"></a>NodeJS能做什么？</h2><pre><code>1、提供数据给浏览器展示
+2、保存用户提交过来的数据
+3、数据统计与分析
+</code></pre><h2 id="怎么学习比较好"><a href="#怎么学习比较好" class="headerlink" title="怎么学习比较好"></a>怎么学习比较好</h2><pre><code>1、看官方文档:
+    API怎么用，缺点，都是一些零散的API，没有一个完整的Demo
+    英语不好就别看了，全英文
+
+2、百度
+    node快速入门 node使用
+
+3、专业Node的论坛【深入学习】
+    http://cnodejs.org/
+4、出错之后的网站:
+    www.baidu.com
+    www.stackoverflow.com
+    使用的时候，搜索英文关键字
+</code></pre><hr>
+<h1 id="Node服务器软件的安装与配置"><a href="#Node服务器软件的安装与配置" class="headerlink" title="Node服务器软件的安装与配置"></a>Node服务器软件的安装与配置</h1><h2 id="Node-exe的安装"><a href="#Node-exe的安装" class="headerlink" title="Node.exe的安装"></a>Node.exe的安装</h2><pre><code>一直下一步就可以了
+
+检测是否安装成功 node -v
+
+另外一种安装node的方式
+    nvm这个软件来安装
+    node version manger,如果你想同时安装多个node版本
+
+    教程:http://www.jianshu.com/p/07c3456e875a
+
+前提:
+    如果使用我们的nvm安装node，那原先的node得干掉
+
+步骤:
+    1、安装nvm这个软件:
+        https://github.com/coreybutler/nvm-windows/releases
+
+    2、使用上面装好的nvm软件，安装我们需要的node版本了
+        指令:
+        nvm install 具体的版本号就行了(https://nodejs.org/en/download/releases/)
+
+        nvm uninstall 具体的版本号
+
+        nvm list 查看当前安装了哪些版本
+
+        nvm use 具体版本号，切换到某个版本
+
+
+建议:
+    你安装一个高一点的稳定的版本即可，因为我们的软件都是向下兼容
+</code></pre><hr>
+<h1 id="系统环境变量及其作用"><a href="#系统环境变量及其作用" class="headerlink" title="系统环境变量及其作用"></a>系统环境变量及其作用</h1><h2 id="系统环境变量"><a href="#系统环境变量" class="headerlink" title="系统环境变量"></a>系统环境变量</h2><pre><code>每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作
+
+那配置了环境变量能做到什么事呢？
+    在我们终端的任何一个目录下，都可以访问，配置在系统环境变量里面的可执行文件
+
+如何将一个软件的可执行文件配置在我们的系统环境变量中?
+    步骤：
+        1、拷贝一个可执行文件所在的目录，比如node.exe所在的目录 `C:\Program Files\nodejs`
+
+        2、去系统(次计算机右键属性) &gt; 高级系统设置 &gt; 高级 &gt; 环境变量 &gt; 系统变量 &gt; Path &gt; 填写上你的目录
+
+注意事项:
+    如果更改了系统的环境变量，就必须把终端重新启动
+</code></pre><hr>
+<h1 id="启动node-exe执行js代码"><a href="#启动node-exe执行js代码" class="headerlink" title="启动node.exe执行js代码"></a>启动node.exe执行js代码</h1><h2 id="启动-相当于启动Apache服务器"><a href="#启动-相当于启动Apache服务器" class="headerlink" title="启动(相当于启动Apache服务器)"></a>启动(相当于启动Apache服务器)</h2><pre><code>1、在我们的node的安装目录下，去双击我们node.exe
+
+2、在终端输入 node即可 node.exe
+</code></pre><h2 id="退出我们的node-exe"><a href="#退出我们的node-exe" class="headerlink" title="退出我们的node.exe"></a>退出我们的node.exe</h2><pre><code>1、在终端中输入.exit
+
+2、连续按住两次 CTRL + C
+</code></pre><h2 id="怎么去执行js代码"><a href="#怎么去执行js代码" class="headerlink" title="怎么去执行js代码"></a>怎么去执行js代码</h2><pre><code>1、直接在启动的node.exe中写代码(在开启的`REPL`环境中写代码执行)【了解】
+    缺点:
+        书写不方便，阅读起来也不方便
+        因为在我们的cmd中写的代码，是放在内存中的，一旦我们退出了node.exe，原先写的代码都没有了
+
+2、把我们写好的代码放在一个单独的js文件中去执行
+    执行的时候，通过node.exe去执行，具体的写法是这样。（重点）
+
+    在终端中输入 node.exe 你要去执行的文件名称
+
+    注意点:
+        1、我们js代码不是在终端中运行的，只是借助终端去启动我们node.exe，并且最终将结果展现在终端里面而已
+
+        2、在运行时候，首先你的终端的目录得切换到你要执行的文件的目录下面去，然后使用node 文件名称执行即可
+
+    我们nodejs的代码是在一个叫做`REPL`环境中，执行的
+</code></pre><hr>
+<h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><h2 id="JS的执行"><a href="#JS的执行" class="headerlink" title="JS的执行"></a>JS的执行</h2><pre><code>执行js在浏览器端，我是是要依靠浏览器(js的解析引擎)
+
+在服务器端 nodejs开启的REPL环境
+
+官网的解释:
+    参考:http://shouce.qdfuns.com/nodejs/repl.html
+
+REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块内容空间里面就可以解释执行我们的js代码
+
+例如:
+    在终端中输入了 node abc.js 做的事情就是，将abc.js中写好的js的逻辑代码扔在启动好的node的内容空间中去运行，我们把启动好的node的这块内存空间称之为REPL环境
+</code></pre><hr>
+<h1 id="模块化思想"><a href="#模块化思想" class="headerlink" title="模块化思想"></a>模块化思想</h1><h2 id="为什么前端需要有模块化"><a href="#为什么前端需要有模块化" class="headerlink" title="为什么前端需要有模块化"></a>为什么前端需要有模块化</h2><pre><code>1、解决全局变量名污染的问题
+2、把相同功能的代码放在一个模块(一个js文件中)方便后期维护
+</code></pre><h2 id="NodeJS中是如何体现模块化"><a href="#NodeJS中是如何体现模块化" class="headerlink" title="NodeJS中是如何体现模块化"></a>NodeJS中是如何体现模块化</h2><pre><code>ecmascript5 var function
+
+1、Node本身是基于CommonJS规范，
+参考:http://javascript.ruanyifeng.com/nodejs/module.html#toc0
+
+2、Node作者在设计这门语言的时候，就严格按照CommonJS的规范，
+将它的API设计成模块化了，比如它将开启Web服务这个功能所有代码都放入一个http模块中
+
+3、Node本质来说就是将相同功能的代码放入到一个.js文件中管理
+</code></pre><h2 id="这篇博客主要整理一下模块的知识"><a href="#这篇博客主要整理一下模块的知识" class="headerlink" title="这篇博客主要整理一下模块的知识"></a>这篇博客主要整理一下模块的知识</h2><pre><code>模块          作用
+http      开启一个Web服务，给浏览器提供服务
+url          给浏览器发送请求用，还可以传递参数(GET)
+querystring 处理浏览器通过GET/POST发送过来的参数
+path      查找文件的路径
+fs          在服务器端读取文件用的
+
+上面五大核心模块加上其它一些第三方的模块，这个时候，我们就可以做一个管理系统出来了
+</code></pre><hr>
+<h1 id="写代码来体验我们Node中模块化开发思想"><a href="#写代码来体验我们Node中模块化开发思想" class="headerlink" title="写代码来体验我们Node中模块化开发思想"></a>写代码来体验我们Node中模块化开发思想</h1><h2 id="开启web服务"><a href="#开启web服务" class="headerlink" title="开启web服务"></a>开启web服务</h2><pre><code>步骤:
+    1、导入我们需要的核心模块(NodeJS提供的模块我们称之为核心模块)
+    require(&apos;http&apos;) 会返回一个 http对象
+
+    2、利用获取到的核心模块的对象，创建一个server对象
+
+    3、利用server对象监听浏览器的请求，并且处理(请求-处理-响应)
+
+    4、开启web服务开始监听
+</code></pre><h2 id="获取url中的一些相关信息"><a href="#获取url中的一些相关信息" class="headerlink" title="获取url中的一些相关信息"></a>获取url中的一些相关信息</h2><pre><code>http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123
+
+http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123
+
+在我们的服务器端，想要获取一些东西
+
+1、路径 login，获取我们路径的作用是为了知道浏览器的意图
+2、传递过来的参数 zhangsan 123
+
+为了获取我们上面需要的东西，这个时候，
+node提供了另外一个核心模块来解决我们这些繁琐的问题 url
+</code></pre><h2 id="使用url模块的步骤"><a href="#使用url模块的步骤" class="headerlink" title="使用url模块的步骤"></a>使用url模块的步骤</h2><pre><code>1、导入url这个核心模块
+</code></pre><p>​    </p>
+<pre><code>2、调用url.parse(url字符串,true)，
+如果是true的话代表把我们的username=zhangsan&amp;pwd=123 字符串解析成js对象
+</code></pre><hr>
+<h1 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h1><pre><code>ECMAScript 6
+参考:http://es6.ruanyifeng.com/
+
+注意点:    
+    写es6的代码最好开启严格模式，让我们在开发阶段写代码更加严谨
+    可以在每个js代码的最前面加上 `use strict`
+</code></pre><h2 id="const-amp-let"><a href="#const-amp-let" class="headerlink" title="const&amp;let"></a>const&amp;let</h2><pre><code>const&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的
+
+定义常量 const 
+
+定义变量 let
+</code></pre><p>   其实和var还是有区别的，const和let在作用域预解析是不会变量提升的</p>
+<h2 id="字符串的一些方法"><a href="#字符串的一些方法" class="headerlink" title="字符串的一些方法"></a>字符串的一些方法</h2><pre><code>字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串，
+其实作用相当于es5的indexOf
+
+startsWith : 判断字符串是否以什么开头，判断协议头 http:// file://
+
+endsWith : 判断字符串是否以什么结尾，判断文件后缀名 .png .jpg .jpeg
+</code></pre><h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><pre><code>作用:
+    1、格式化字符串，以你想要的格式输出
+    2、模版：占位替换
+
+语法:
+    ``
+</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>   E5写法<br>    function add(x,y){<br>          return x + y<br>          }<br>   E6写法<br>    const add = (x,y) =&gt; {<br>    return x + y}<br>    只有一个参数，并且函数块中只有一行代码<br>    我们的函数参数的<code>()</code>可以不写<br>    函数体的 <code>{}</code> return 都可以省略，如下例子</p>
+<pre><code>const printName = name =&gt; console.log(&quot;我的名字是 &quot;+name)
+printName(&quot;小白&quot;)
+</code></pre><hr>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;NodeJS的基本概念&quot;&gt;&lt;a href=&quot;#NodeJS的基本概念&quot; class=&quot;headerlink&quot; title=&quot;NodeJS的基本概念&quot;&gt;&lt;/a&gt;NodeJS的基本概念&lt;/h1&gt;&lt;h2 id=&quot;NodeJS是什么？&quot;&gt;&lt;a href=&quot;#NodeJS是什么？&quot; class=&quot;headerlink&quot; title=&quot;NodeJS是什么？&quot;&gt;&lt;/a&gt;NodeJS是什么？&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="Node" scheme="http://yoursite.com/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SVG使用</title>
+    <link href="http://yoursite.com/2016/06/30/SVG%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/06/30/SVG使用/</id>
+    <published>2016-06-30T06:19:20.000Z</published>
+    <updated>2017-06-07T13:39:03.446Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SVG使用记录"><a href="#SVG使用记录" class="headerlink" title="SVG使用记录"></a>SVG使用记录</h2><a id="more"></a>
+<p>1.绘制矩形</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;rect x=<span class="string">""</span> y=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/rect&gt;</div><div class="line">(x, y): 左上角坐标</div><div class="line">rx: x轴圆角半径</div><div class="line">ry: y轴圆角半径</div><div class="line">width: 长度</div><div class="line">height: 高度</div></pre></td></tr></table></figure>
+<p>2.绘制圆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx=<span class="string">""</span> cy=<span class="string">""</span> r=<span class="string">""</span>&gt;&lt;/circle&gt;</div><div class="line"> (cx, cy): 圆心</div><div class="line"> r: 半径</div></pre></td></tr></table></figure>
+<p>3.绘制椭圆</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx=<span class="string">""</span> cy=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span>&gt;&lt;/ellipse&gt;</div><div class="line">    (cx, cy): 中心点</div><div class="line">    rx: x轴半径</div><div class="line">    ry: y轴半径</div></pre></td></tr></table></figure>
+<p>4.绘制直线</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;line x1=<span class="string">""</span> y1=<span class="string">""</span> x2=<span class="string">""</span> y2=<span class="string">""</span>&gt;&lt;/line&gt; </div><div class="line">(x1, y1): 线条的起始点</div><div class="line">(x2, y2): 线条的结束点</div></pre></td></tr></table></figure>
+<p>5.绘制折线<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polyline&gt;</div></pre></td></tr></table></figure></p>
+<p>6.绘制多边形</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polygon&gt;</div></pre></td></tr></table></figure>
+<p>7.绘制图像</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;image xlink:href=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/image&gt;</div></pre></td></tr></table></figure>
+<p>8.绘制文本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;text x=&quot;&quot; y=&quot;&quot;  font-size=&quot;&quot; dx=&quot;&quot; dy=&quot;&quot;&gt;text&lt;/text&gt;</div><div class="line">   (x, y): 文字左下角的起始坐标</div><div class="line">   dx: 横轴的偏移</div><div class="line">   dy: 纵轴的偏移</div></pre></td></tr></table></figure>
+<p>9.渐变</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;defs&gt;</div><div class="line">&lt;linearGradient x1="" y1="" x2="" y2=""&gt;</div><div class="line">  &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;</div><div class="line">&lt;/linearGradient&gt;</div><div class="line">   &lt;radialGradient cx="" cy="" r=""&gt;</div><div class="line">  &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;</div><div class="line">&lt;/radialGradient&gt;</div><div class="line">&lt;/defs&gt; </div><div class="line">offset: 渐变开始的位置 0% - 100%</div><div class="line">x1: 开始横坐标</div><div class="line">y1: 开始纵坐标</div><div class="line">x2: 结束横坐标</div><div class="line">y2: 结束纵坐标</div><div class="line">cx: 外层圆心横坐标</div><div class="line">cy: 外层圆心纵坐标</div><div class="line">r: 发散的半径</div></pre></td></tr></table></figure>
+<p>10.滤镜</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;defs&gt;</div><div class="line">	&lt;filter id=&quot;f1&quot;&gt;</div><div class="line">    	&lt;feGaussionBlur stdDeviation=&quot;3&quot;&gt;</div><div class="line">	&lt;/filter&gt;</div><div class="line">&lt;/defs&gt;</div><div class="line">&lt;text filter=&quot;url(#f1)&quot;&gt;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;SVG使用记录&quot;&gt;&lt;a href=&quot;#SVG使用记录&quot; class=&quot;headerlink&quot; title=&quot;SVG使用记录&quot;&gt;&lt;/a&gt;SVG使用记录&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="SVG" scheme="http://yoursite.com/tags/SVG/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zepto设置select选中兼容问题</title>
+    <link href="http://yoursite.com/2016/05/10/zepto%E8%AE%BE%E7%BD%AEselect%E9%80%89%E4%B8%AD%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/05/10/zepto设置select选中兼容问题/</id>
+    <published>2016-05-10T13:00:36.000Z</published>
+    <updated>2017-06-05T12:02:18.968Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="zepto设置select选中兼容问题"><a href="#zepto设置select选中兼容问题" class="headerlink" title="zepto设置select选中兼容问题"></a>zepto设置select选中兼容问题</h1><p>在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑</p>
+<a id="more"></a>
+<p>1.zepto要拿到option的值需要通过下面的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//拿到选中的option的 value值</span></div><div class="line">   <span class="keyword">var</span>  value= $(<span class="string">"#select option"</span>).not(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="keyword">return</span> !<span class="keyword">this</span>.selected &#125;).val()</div></pre></td></tr></table></figure>
+<p>2.zepto 设置select选中 需要注意</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Safari浏览器不兼容，一开始我是这样写的被坑了 </span></div><div class="line">$(<span class="string">'select'</span>).find(<span class="string">'option[value="'</span>+key+<span class="string">'"]'</span>).attr(<span class="string">'selected'</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Safari浏览器兼容 </span></div><div class="line">$(<span class="string">'select'</span>).find(<span class="string">'option[value="'</span>+key+<span class="string">'"]'</span>).attr(<span class="string">'selected'</span>, <span class="string">'selected'</span>);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;zepto设置select选中兼容问题&quot;&gt;&lt;a href=&quot;#zepto设置select选中兼容问题&quot; class=&quot;headerlink&quot; title=&quot;zepto设置select选中兼容问题&quot;&gt;&lt;/a&gt;zepto设置select选中兼容问题&lt;/h1&gt;&lt;p&gt;在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git管理工具的使用</title>
+    <link href="http://yoursite.com/2016/04/20/git%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/04/20/git管理工具的使用/</id>
+    <published>2016-04-20T13:59:36.000Z</published>
+    <updated>2017-06-07T00:28:55.714Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="说说Git"><a href="#说说Git" class="headerlink" title="说说Git"></a>说说Git</h3><a id="more"></a>
+<p>   本教程朗朗上口，get  it。</p>
+<ol>
+<li><p>git是源代码管理工具，也称为版本控制工具</p>
+</li>
+<li><p>优势</p>
+<ul>
+<li><p>利于团队的开发，方便后期维护，安全</p>
+</li>
+<li><p>对个人而言对某个功能修改操作</p>
+</li>
+</ul>
+</li>
+<li><p>优势</p>
+<ul>
+<li>官网下载git </li>
+<li>根据提示，点下一步安装（一般一直点下一步就可以了）</li>
+</ul>
+</li>
+</ol>
+<h3 id="bash命令基础"><a href="#bash命令基础" class="headerlink" title="bash命令基础"></a>bash命令基础</h3><p>在学习git之前，必须先熟悉bash命令的基础用法</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">功能</th>
+<th style="text-align:left">参数与</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">pwd</td>
+<td style="text-align:center">打印当前目录路径的全名称</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">ls</td>
+<td style="text-align:center">显示任意目录 所有文件</td>
+<td style="text-align:left">-l （显示详细信息，快捷ll=ls -l ）  -a（显示隐藏文件）-d 查看目录</td>
+</tr>
+<tr>
+<td style="text-align:center">cd</td>
+<td style="text-align:center">切换文件夹</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">mkdir</td>
+<td style="text-align:center">创建文件夹</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">rm</td>
+<td style="text-align:center">删除文件</td>
+<td style="text-align:left">-r 子文件一起删除   -f 强制删除</td>
+</tr>
+<tr>
+<td style="text-align:center">touch</td>
+<td style="text-align:center">创建文件</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">date</td>
+<td style="text-align:center">查看时间</td>
+<td style="text-align:left">date -s 2017-01-1 修改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">cat</td>
+<td style="text-align:center">查看文件内容</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:center">cp</td>
+<td style="text-align:center">复制</td>
+<td style="text-align:left">选择文件    复制到哪个目录</td>
+</tr>
+<tr>
+<td style="text-align:center">mv</td>
+<td style="text-align:center">重命名  移动</td>
+<td style="text-align:left">移动文件     复制到哪个目录，可重命名</td>
+</tr>
+<tr>
+<td style="text-align:center">vi  vim</td>
+<td style="text-align:center">编辑文件</td>
+<td style="text-align:left">i o a 编辑模式  ecs 退出模式  ：！wq 强制保存退出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="git-bash-基础"><a href="#git-bash-基础" class="headerlink" title="git bash 基础"></a>git bash 基础</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用与注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">git init</td>
+<td style="text-align:center">当前文件夹进行初始化（被git管理）</td>
+</tr>
+<tr>
+<td style="text-align:center">git status</td>
+<td style="text-align:center">查看仓库中的相关的文件状态，空文件夹不显示</td>
+</tr>
+<tr>
+<td style="text-align:center">git add <file></file></td>
+<td style="text-align:center">将指定的文件放到暂存区 ， *=全部</td>
+</tr>
+<tr>
+<td style="text-align:center">git commit</td>
+<td style="text-align:center">将暂存区的文件放到主仓库 -m 备注信息</td>
+</tr>
+<tr>
+<td style="text-align:center">git config user.name</td>
+<td style="text-align:center">设置用户名，–global 全局设置</td>
+</tr>
+<tr>
+<td style="text-align:center">git config user.email</td>
+<td style="text-align:center">设置邮箱，–global 全局设置</td>
+</tr>
+<tr>
+<td style="text-align:center">git push [地址] master</td>
+<td style="text-align:center">将本地主仓库中的代码上传到服务器中</td>
+</tr>
+<tr>
+<td style="text-align:center">git log</td>
+<td style="text-align:center">查看日志</td>
+</tr>
+<tr>
+<td style="text-align:center">git pull [地址] master</td>
+<td style="text-align:center">获取服务器文件，关联你的仓库</td>
+</tr>
+<tr>
+<td style="text-align:center">git diff  <file></file></td>
+<td style="text-align:center">查看同一个文件修改了那些内容</td>
+</tr>
+<tr>
+<td style="text-align:center">git rm <file></file></td>
+<td style="text-align:center">删除某个文件</td>
+</tr>
+<tr>
+<td style="text-align:center">git remote add [变量名]&lt;值&gt;</td>
+<td style="text-align:center">可以保存<code>变量</code>,一般保存仓库地址</td>
+</tr>
+<tr>
+<td style="text-align:center">git remote</td>
+<td style="text-align:center">查看存在哪些<code>变量</code></td>
+</tr>
+<tr>
+<td style="text-align:center">git remote remove [变量名]</td>
+<td style="text-align:center">删除<code>变量</code></td>
+</tr>
+<tr>
+<td style="text-align:center">git log –oneline</td>
+<td style="text-align:center">简洁的日志显示，方便查看版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">git reset –hard [版本号]</td>
+<td style="text-align:center">回溯到某个版本号</td>
+</tr>
+<tr>
+<td style="text-align:center">git reflog</td>
+<td style="text-align:center">查看历史记录的版本号id</td>
+</tr>
+<tr>
+<td style="text-align:center">git clone  [地址]</td>
+<td style="text-align:center">克隆远程库</td>
+</tr>
+<tr>
+<td style="text-align:center">git checkout – <file></file></td>
+<td style="text-align:center">把对文件的修改在暂存区全部取消</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch</td>
+<td style="text-align:center">查看当前分支</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch [分支名]</td>
+<td style="text-align:center">创建新分支</td>
+</tr>
+<tr>
+<td style="text-align:center">git checkout [分支名]</td>
+<td style="text-align:center">切换到指定分支下面去</td>
+</tr>
+<tr>
+<td style="text-align:center">git merge [分支名] -m [备注信息]</td>
+<td style="text-align:center">将指定分支合并到当前分支下</td>
+</tr>
+<tr>
+<td style="text-align:center">git branch -d [分支名]</td>
+<td style="text-align:center">删除指定的分支</td>
+</tr>
+</tbody>
+</table>
+<h3 id="配置SSH连接github"><a href="#配置SSH连接github" class="headerlink" title="配置SSH连接github"></a>配置SSH连接github</h3><ol>
+<li>在本地生成秘钥：ssh-keygen -t rsa</li>
+<li>找到秘钥生成的目录，将公钥放到Github中<br> a、github点击右上角人物头像<br> b、选择settings菜单<br> c、选择SSH相关菜单<br> d、选择添加一个SSH<br> e、输入ssh的名称，已知内容（就是公钥）将公钥放入其中，保存即可</li>
+<li>在本地测试 ssh git@github.com看看是否成功<br>Hi chengxc! You’ve successfully authenticated, but GitHub does not provide shell access.</li>
+</ol>
+<h3 id="设置文件不让git管理"><a href="#设置文件不让git管理" class="headerlink" title="设置文件不让git管理"></a>设置文件不让git管理</h3><p>1.在.git同级目录添加一个文件，叫 .gitignore<br>    创建这个文件名的时候，<br>        a：文件名：”.gitignore.”<br>        b、bash命令：touch .gitignore</p>
+<p>2.打开.gitignore进行编辑，一行一行的添加不需要git管理的文件<br>    可以设置同类型的文件：<em>.js </em>.css<br>    也可以设置整个目录：<br>        a/<em>–&gt;a目录下面的所有文件<br>        a/</em>.js–&gt;a目录下面的所有js文件</p>
+<h3 id="删除服务器中的文件"><a href="#删除服务器中的文件" class="headerlink" title="删除服务器中的文件"></a>删除服务器中的文件</h3><h4 id="第一种方式："><a href="#第一种方式：" class="headerlink" title="第一种方式："></a>第一种方式：</h4><ul>
+<li><p>rm 文件名</p>
+</li>
+<li><p>git add 文件名</p>
+</li>
+<li><p>git add 文件名</p>
+</li>
+<li><p>git push 远程服务器 master</p>
+</li>
+</ul>
+<h4 id="第二种方式-推荐使用"><a href="#第二种方式-推荐使用" class="headerlink" title="第二种方式:推荐使用"></a>第二种方式:推荐使用</h4><ul>
+<li><p>git rm 文件名</p>
+</li>
+<li><p>git commit -m 提交</p>
+</li>
+<li><p>git push 远程服务器 master</p>
+</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>如果删除文件由于误操作没有成功，可以通过提示删除，再push到服务器上 </li>
+<li>无论是创建分支还是合并分支时刻警醒当前位于哪个位置</li>
+<li>不要在本地分支上push代码</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;说说Git&quot;&gt;&lt;a href=&quot;#说说Git&quot; class=&quot;headerlink&quot; title=&quot;说说Git&quot;&gt;&lt;/a&gt;说说Git&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="bash" scheme="http://yoursite.com/tags/bash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo搭建</title>
+    <link href="http://yoursite.com/2016/03/23/hexo%E5%90%91%E5%AF%BC%E7%AF%87/"/>
+    <id>http://yoursite.com/2016/03/23/hexo向导篇/</id>
+    <published>2016-03-23T04:10:36.000Z</published>
+    <updated>2017-06-07T14:29:14.455Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="github-配合-hexo-搭建博客"><a href="#github-配合-hexo-搭建博客" class="headerlink" title="github 配合 hexo 搭建博客"></a>github 配合 hexo 搭建博客</h1><a id="more"></a>
+<ol>
+<li><p>域名推荐去万网选一个</p>
+<ul>
+<li>个人网站起名简单，整洁为上。</li>
+<li>看情况选择后缀，后缀有一定含义，比如cn代表中国</li>
+<li>有些后缀需要备案，不推荐</li>
+</ul>
+</li>
+<li><p>服务器 </p>
+<ul>
+<li>这个不是必须的</li>
+<li>有自己的服务器的话配置好环境和服务，自己管理还要维护</li>
+<li>一般免费的不稳定，稳定的不免费</li>
+<li>所以推荐用第三方托管的方式 比较好  </li>
+</ul>
+</li>
+<li><p>需要把域名解析到服务器</p>
+<p> 只需要把你的域名解析成 github.io 的ip（可以用cmd  ping 你的gitbub.io 得到ip） </p>
+<p>并在github.io 的 settings  设置 Custom domain 为 你的域名 （例如：zeroxie.me）</p>
+</li>
+<li><p>需要写博客<br>4.1 直接写静态页面（不会有人这么做）<br>4.2 使用现有的一些博客框架（WordPress） 稍微懂一点点PHP 要回搭建PHP的运行环境，还要会配置MySQL<br>4.3 直接自己动手写一个博客系统 需要懂一门后台语言，要懂数据库操作，要懂服务器相关的知识</p>
+<p>4.4 现成的框架，Hexo， 你只需要写MarkDown文件，hexo这种框架会自动帮你把所有的markdown文件转换成html，并且帮你将所有的文章进行归类</p>
+</li>
+</ol>
+<ol>
+<li>github提供了静态页面托管服务， github给每一个用户都提供了一个项目的静态页面托管服务，但是一定要注意，一个账户只有一个项目的名额</li>
+<li>github静态页面托管服务会给你提供一个域名，让你访问自己的网站</li>
+<li>服务器也是github的服务器</li>
+</ol>
+<h1 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h1><p>npm install hexo-cli -g</p>
+<h1 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h1><p>hexo init   初始化博客</p>
+<p>hexo new “文章名”  新建一篇文章 sources/_posts/….</p>
+<p>hexo g 将md文件生成html</p>
+<p>hexo s 在本地预览已经编辑好的博客内容</p>
+<h2 id="要把生成好的网站发布到-github上"><a href="#要把生成好的网站发布到-github上" class="headerlink" title="要把生成好的网站发布到 github上"></a>要把生成好的网站发布到 github上</h2><ol>
+<li><p>需要注册github账号</p>
+</li>
+<li><p>在github中创建一个库 库名  github用户名.github.io</p>
+</li>
+<li><p>配置在博客文件根目录中的_congif.yml文件</p>
+</li>
+</ol>
+<p>   deploy:<br>     type: git<br>     repo: 就是刚才创建的那个库的地址（复制https的地址）<br>     branch: master</p>
+<ol>
+<li><p>在博客根目录下执行 npm install hexo-deployer-git –save</p>
+</li>
+<li><p>在public目录下执行 git init命令</p>
+</li>
+<li><p>在public目录下执行 hexo d 命令</p>
+</li>
+</ol>
+<p>大功告成 可以通过 github用户名.github.io 直接访问你的博客了</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;github-配合-hexo-搭建博客&quot;&gt;&lt;a href=&quot;#github-配合-hexo-搭建博客&quot; class=&quot;headerlink&quot; title=&quot;github 配合 hexo 搭建博客&quot;&gt;&lt;/a&gt;github 配合 hexo 搭建博客&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
+    
+      <category term="github，hexo" scheme="http://yoursite.com/tags/github%EF%BC%8Chexo/"/>
+    
+  </entry>
+  
+</feed>

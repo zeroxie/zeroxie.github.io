@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[第三方登录服务]]></title>
+    <url>%2F2016%2F10%2F27%2F%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97%2F</url>
+    <content type="text"><![CDATA[###第三方登录服务的使用心得 ####前提:1、去微博、微信、QQ开发者中心去注册成为他的开发者 http://open.weibo.com/ 2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息 ####正式接入:1、去下载它的sdk，就是一个/多个js文件(有点类似于下载jQuery.js) 2、导入到你的项目中，一般都是导入一个js文件，一般都是CDN导入 3、调用它里面特定的接口(比如登录) 给接口传递一些必要的参数，例如：weiboLogin(‘2257804123’,’afasfaf’)$(“#xxId”)​4、等用户同意给我们应用授权授权之后，就可以拿到用户在开放平台(微博，微信)的信息了​昵称、头像、好友关系​5、把上一步获取到的用户的信息传递给后台，后台得存着(把微博用户的信息和我们自己App的账号平台关联起来) ####建议:首先把流程必须弄清楚，第二，到时候再需要做这个功能的时候，再去看文档，看最新的文档，因为这些开发平台的文档在变，每一个大的版本都会发生改变 ####平台参考链接微博登陆点这里微信登陆点这里QQ登陆点这里]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[xTemplate模板实例参考]]></title>
+    <url>%2F2016%2F09%2F18%2FxTemplate%E6%A8%A1%E6%9D%BF%E8%AF%AD%E5%8F%A5%E5%8F%82%E8%80%83%2F</url>
+    <content type="text"><![CDATA[xTemplate模板实例参考 XTemplate是易学易懂的模板语言 ####直接来看这个模板实例 1234567Hello &#123;&#123;name&#125;&#125;You have just won $&#123;&#123;value&#125;&#125;!&#123;&#123;#if data&#125;&#125; &#123;&#123;#each data&#125;&#125; &#123;&#123;name&#125;&#125;-&#123;&#123;xindex&#125;&#125;/&#123;&#123;xcount&#125;&#125; &#123;&#123;/each&#125;&#125;&#123;&#123;/if&#125;&#125; 对应要填充的JSON： 12345678&#123; name:&apos;Kissy&apos;, value:&apos;10000&apos;, data:[ &#123;name:1&#125;, &#123;name:2&#125; ]&#125; 下面是输出结果 Kissy You have just won $10000! 1-0/2 2-1/2 ```1234567891011121314151617181920212223242526272829这时循环内的 &#123;&#123;xindex&#125;&#125; 表示循环的索引值， &#123;&#123;xcount&#125;&#125; 表示循环的总次数， &#123;&#123;name&#125;&#125; 是数组中每个对象的属性 name ，替换为属性的值，这里name使用this也是可以的，this表示循环的每一个item。#### each中数据层次相对位置的访问循环体内可以获取JSON对象上的其他属性，同过相对位置写法获得，比如这段XTemplate：&#123;&#123;#each data&#125;&#125; &#123;&#123;this&#125;&#125;-&#123;&#123;../total&#125;&#125;&#123;&#123;/each&#125;&#125;要填充的JSON对象为：&#123; data: [1, 2], total: 3&#125;填充结果为：1-3 2-3#### 在Node中使用1. npm i xtpl xtemplate --save2. js 导入包 const xtpl = require(&apos;xtpl&apos;)3. 使用 xtpl.renderFile( //使用模板读取数据文件渲染path.join(__dirname,’list.html’),//文件路径这里使用path服务{array:datas}, //这是数据(err,content)=&gt;{res.send(content)//ES6语法 回调函数，做你想做得事 //这里使用send的是用的express服务 })```]]></content>
+      <categories>
+        <category>模板引擎</category>
+      </categories>
+      <tags>
+        <tag>xTemplate</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[mongodb数据库]]></title>
+    <url>%2F2016%2F09%2F15%2Fmongodb%E5%AD%A6%E4%B9%A0%2F</url>
+    <content type="text"><![CDATA[mongodb数据库 数据库保存数据的仓库，数据库本质也是一个文件，只是说和普通的文件不太一样，他有自己的存储规则，让保存数据和查询数据更加方便 ###存储文件的介质 localStorage 文本文件 如何在代码中对的localStorage 想往localStorage中增加或是查找一条数据 大型数据或是海量数据的时候必须要用到数据库 数据库的分类客户端： iOS/Android/前端 iOS/Android SQLite 在iOS/Android存储App的数据 服务端： 关系型数据库 部门---员工 非关系型数据库 JSON对象的形式来存储 MongoDB Redis Memcached 数据库的作用1、保存应用程序产生的数据(用户注册数据，用户的个人信息等等) 2、当应用程序需要数据的时候，提供给应用程序去展示 安装mongodb服务端步骤： 1、安装mongodb服务端软件 2、设置mongodb的环境变量，重启终端验证 mongo -version 3、建立一个文件夹，用来存储mongodb数据库产生的数据(建议放在C盘根目录 mongodb_datas) 4、启动 mongod --dbpath c:/mongodb_datas 启动服务端有几种方式1、方式一，直接在cmd中输入 mongod --dbpath c:/mongodb_datas 32位: mongod --dbpath c:/mongodb_datas --journal --storageEngine=mmapv1 2、方式二，可以把 mongod --dbpath c:/mongodb_datas 做成一个批处理文件 32位: mongod --dbpath c:/mongodb_datas --journal --storageEngine=mmapv1 3、方式三，做成开机启动命令 1、在c:/mongodb_datas下面建议一个文件夹server_log，再在这个文件夹下面建立一个mongodb.log 2、以管理员的身份启动终端 64位运行 mongod.exe --bind_ip 127.0.0.1 --logpath &quot;C:/mongodb_datas/server_log/mongodb.log&quot; --logappend --dbpath &quot;c:/mongodb_datas&quot; --port 27017 --serviceName &quot;MongoDBServer&quot; --serviceDisplayName &quot;MongoDBServerDisplayName&quot; --install 32位 mongod.exe --bind_ip 127.0.0.1 --logpath &quot;C:/mongodb_datas/server_log/mongodb.log&quot; --logappend --dbpath &quot;c:/mongodb_datas&quot; --journal --storageEngine=mmapv1 --port 27017 --serviceName &quot;MongoDBServer&quot; --serviceDisplayName &quot;MongoDBServerDisplayName&quot; --install 3、在任务管理器中找到MongoDBServer 开启运行 使用robomongo这个小机器人来操作的数据库中的数据步骤: 1、连接到mongodb数据库服务端，并且连接成功之后，服务端会给返回一个操作数据库的db对象 2、拿着上一步返回的db对象，对mongodb数据库中的数据进行操作了 连接成功之后，要来操作数据的话 1、创建一个数据库 (相当于在excel中创建空白工作簿) 2、创建集合 (相当于在excel创建工作表单) 数据的一个集合，把相关联的数据放在一个集合中 3、确立表头，插入数据、删除数据、修改数据、查询数据 MongoDB数据库中的概念数据库 ： 一个App中对应一个数据库 集合：相当于Excel中表单，一堆数据的集合，相关联的数据，会放在一个集合中，必须学生相关的数据，放在学生集合中，商品相关的数据，放入一个商品集合中 文档：相当于excel中的每一行数据 一个数据中可以有多个集合(学生集合、食品集合) 一个集合可以有多条文档(多条数据) REPL(NodeJS中)如何操作mongodb数据库中的数据【重点】注意:因为mongodb不光只有nodejs能操作，java,php,.net都可以操作它里面的数据 一般通过NodeJS,java,php等操作mongodb数据库中的数据的时候，不会在程序运行阶段去创建数据库和集合 一般创建数据库和创建集合在后台人员刚开始编码之前就已经创建好了，在大公司里面会有专门的DBA来进行创建数据库和集合 NodeJS中操作mongodb数据库中的数据mongodb : https://www.npmjs.com/package/mongodb 思路: 1、连接到mongodb服务端，连接成功之后，服务端会返回一个db对象 2、拿着这个服务端返回的db对象，操作数据库中的数据(操作szhmqd06数据库中的foodInfo中的数据) 前提: 必须启动mongodb服务端 具体代码步骤: 1、安装mongodb第三方包 npm install mongodb --save 2、导入 3、根据文档写代码]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NodeJs学习记录四]]></title>
+    <url>%2F2016%2F09%2F14%2FNode%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E5%9B%9B%2F</url>
+    <content type="text"><![CDATA[服务端渲染 前端参与的开发方式，大概两种1、服务器端渲染，只需要负责写那些静态页面即可(写一些模版的语法) 2、前后端分离【主流趋势】 服务器端渲染的流程1、监听浏览器的请求，明白浏览器的意图 判断的url中是否包含类似于index.html等等 2、根据浏览器的意图，去服务器硬盘上面找到对应资源(html,css,js,xxx) 3、根据需要去数据库中获取相应的数据 4、把数据和页面(html)生成一个完整的网页(借助xtpl&amp;xtemplate来操作) 5、把生成好的完整的网页返回给浏览器，浏览器只需要负责解析渲染出来 xtpl&amp;xtemplate结合起来实现服务器端渲染 xtemplate : 在页面中写那些占位的模版语法 xtpl : 在nodejs后台开启web服务的js文件中，利用真实的数据替换模版中的占位符，最终得到完整的html页面 document ---&gt; jQuery Express 这个挺重要的基本概念它是对HTTP封装，用来简化网络功能那一块 官网:http://www.expressjs.com.cn/ 官方解释: 基于 Node.js 平台，快速、开放、极简的 web 开发框架。 学习最终的几点 1、如何去接收GET/POST传递过来的参数 2、如何通过Express进行分门别类的处理路由 3、静态资源的处理 使用步骤: 1、导入包 2、创建一个app 3、请求处理响应 4、开启web服务，开始监听 2、获取GET/POST参数 GET参数：登录 http://127.0.0.1:3000/login?username=zhangsan&amp;pwd=123 可以直接在的req.query中就可以获取了 POST参数：因为express没有直接提供获取POST参数的方法，需要借助一个第三方包 body-parser 参考: https://www.npmjs.com/package/body-parser 步骤: 1、npm install body-parser --save 2、导包 3、实现某些方法 最后通过req.body即可以获取到post提交过来的参数 路由处理前端路由: 作用:当触发了某个超链接之后，根据路由的配置，决定跳转到哪个页面，最终将这个页面呈现出来 后台的路由 作用:就是用来分门别类的出路用户发送过来的请求 http://127.0.0.1:3000/login http://127.0.0.1:3000/register http://127.0.0.1:3000/getGoodsList http://127.0.0.1:3000/getGoodsInfo jd购物 男士:(专门创建一个man.js文件来实现男士区域商品的请求) http://www.jd.com/man/xz http://www.jd.com/man/ld http://www.jd.com/man/px 女士:(专门创建一个girl.js文件来实现女士区域商品的请求) http://www.jd.com/girl/xs http://www.jd.com/girl/bag http://www.jd.com/girl/kh express中代码实现? 步骤: 1、先要创建一个单独的路由(js文件)，来处理某一类请求下面的所有用户请求，并且需要导出去 1.1 导入包 express 1.2 创建一个路由对象 const manRouter = express.Router() 1.3 在具体的路由js中处理属于该文件的路由 manRouter.get(xxx) manRouter.post(xxx) 1.4 将上面创建的路由对象导出去，在入口文件中使用 2、在入口文件中，导入的路由文件，并且使用就可以了 //导入路由文件 const manRouter = require(path.join(__dirname,&quot;man/manRouter.js&quot;)) //在入口文件中使用 app.use(&apos;/man&apos;,manRouter) Express中静态资源的处理Express希望对后台静态资源处理，达到简单的目的，然后只希望程序员写一句话就能搞定 步骤: 1、在入口文件中设置静态资源的根目录 注意点:一定要在路由处理之前设置 app.use(express.static(path.join(__dirname,&apos;statics&apos;))) 2、在的页面中，按照Express的规则来请求后台静态资源数据 写link的href,script的src写的时候，除开静态资源根路径之外，按照他在服务器上面的路径规则写]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NodeJs学习记录三]]></title>
+    <url>%2F2016%2F09%2F12%2FNodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%89%2F</url>
+    <content type="text"><![CDATA[NodeJs学习记录三 自定义模块模块的分类核心模块(包) 第三方模块(包) npmjs.com 自定义模块(包) 淘宝开源:http://code.taobao.org 注意点: 在使用require引入模块的时候，核心模块和第三方模块，写上名字即可 如果是自定义模块，写上全路径 如何去自定义模块自执行函数 (function($){ xxx:xxx })(jQuery) AMD:requireJS #define([..,..],function($,xxx){ }) CommonJS 引入： require(&apos;核心/第三方/自定义模块&apos;) 暴露,导出 : module.exports = {} 把写好的自定义模块发布到npmjs上面去前提准备: 1、把我们要上传上去的自定义模块，按照npmjs的要求进行完善 package.json(描述我们自己写的这个自定义模块) 如果要想正确发布到npmjs.com这个时候，完善package.json中的内容，详见下一章节 2、注册npmjs.com的账号 发布到npmjs.com【网速还是要可以】 使用npm指令发布，在终端里面操作 步骤: 1、要让终端连接上我们npmjs.com npm adduser，会提示让你输入用户名，密码，邮箱 2、发布 npm publish 3、升级 1、改代码，一定要把版本号递增（不能减少） 4、撤销 npm unpublish szhmqd06calc@2.1.0 npm unpublish 包的名称@版本号 注意事项: 1、必须在我们项目根目录下面，在进行操作 2、在任何终端里面输入密码都是没有提示的，输完之后，按回车即可 3、每次升级一定要对版本号进行递增，大的版本迭代，更改一个大版本号，如果是小版本修复，就写上小的版本号 发布自定义模块到npmjs.com的时候，package.json的配置步骤: 1、在项目的根目录下，使用npm init 或是 npm init -y 来生成一个package.json 下载第三方包的途径补充平时下载第三方包: npm i/install 包名称 --save-dev/--save http://npm.taobao.org/ 因为我们有时候去npmjs.com上面下载第三方包可能比较慢，这个时候我们就可以考虑从国内的淘宝服务器上面去下载 前提: 1、安装nrm 用来切换镜像 `npm i nrm -g` nrm ls 看当前有哪些镜像可用 nrm use 镜像名称，切换镜像 2、安装cnpm 这个全局包，用来从http://npm.taobao.org/下载第三方包 npm i cnpm -g 使用: 在项目根目录下，使用cnpm i 包名 --save，来使用 开发建议： 喜欢从npmjs.com上面下载，网速好，建议还是从npmjs.com上面去下载 服务器端渲染(服务器端动态生成网页)demo1当在浏览器中输入 http://127.0.0.1:5555/index.html 把 首页 返回 给你 123456789101112131415161718//HTML的代码&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;link rel="stylesheet" href="/abc.css"&gt; &lt;title&gt;首页&lt;/title&gt;&lt;/head&gt;&lt;body&gt; &lt;ul&gt; &#123;&#123;#each(array)&#125;&#125; &lt;li&gt;&#123;&#123;this&#125;&#125;&lt;/li&gt; &#123;&#123;/each&#125;&#125; &lt;/ul&gt;&lt;/body&gt;&lt;/html&gt; 1234567891011121314151617181920212223242526272829303132333435363738394041//这是js文件的代码//导入包const http = require('http')const path = require('path')const fs = require('fs')const xtpl = require('xtpl')//创建serverconst server = http.createServer()const datas = require(path.join(__dirname,'datas.json'))//监听请求，进行处理，响应给浏览器server.on('request',(req,res)=&gt;&#123; if(req.url.includes('index'))&#123; /** * 参数1：你要进行替换生成的页面(内部封装了fs) * 参数2：在页面中替换时候，需要的真实数据的属性名称和值 * 参数3：回调，渲染完毕之后的结果 */ xtpl.renderFile(path.join(__dirname,'index.html'),&#123; array:datas &#125;,function(error,content)&#123; res.setHeader("Content-Type","text/html;charset=utf-8") res.end(content) &#125;) &#125;else if(req.url.includes("abc.css"))&#123; fs.readFile(path.join(__dirname,'site.css'),(err,data)=&gt;&#123; //文件的mimeType res.setHeader("Content-Type","text/css;charset=utf-8") res.end(data) &#125;) &#125;&#125;)//开启web服务server.listen(5555,'127.0.0.1',(err)=&gt;&#123; if(err)&#123; console.log(err) &#125; console.log("start success")&#125;)]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NodeJs学习记录二]]></title>
+    <url>%2F2016%2F09%2F11%2FNodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%BA%8C%2F</url>
+    <content type="text"><![CDATA[NodeJs 学习记录二 QueryString作用: 将GET/POST传递过来的参数，进行解析 GET : ?username=zhangsan&amp;pwd=123 POST : username=zhangsan&amp;pwd=123 使用: const querystring = require(&apos;querystring&apos;) const paramsObj = querystring.parse(键值对的字符串) GET&amp;POST相同点: 都是HTTP协议的方法 都能传递参数给服务器 不同点: 1、传参的方式不一样 GET 放在路径后面 ?开始，后面键值对 POST 放在请求体 键值对的方式 2、传参的限制不一样 GET 2048 POST 2M 3、GET有缓存，POST没有 4、GET传参不安全，POST相对安全 开发中的建议 如果只是单纯的获取数据，就用GET，因为GET有缓存效率高 如果是要向服务器提交数据，就用POST fs&amp;pathpath作用：获取路径 path.join(__dirname,&apos;你要读取的文件夹下面的文件名称即可&apos;) __dirname全局属性，代表当前文件所在的文件夹路径 path.join会自动判断文件的路径，并且给他加上`/` fs作用:读取服务器硬盘上面的某一个文件(操作文件) fs.readFile ： 异步读取服务器硬盘上面的某一个文件 作用fs:node去读取服务器硬盘中的文件(操作文件) path:获取文件的路径 上面两个基本上配合起来用 出现乱码的原因及解决方案出现乱码的原因我们文件在写入和读取的时候，编码不一致，造成的问题 解决办法文件在写入与读取的时候，要保持编码一致，并且用UTF-8 Android 编码介绍ASCII 键盘上看到了 ISO-8859-1 欧洲计算机协会整的 韩语 xxx 中国 GB2312 5000汉字 GBK 2万个汉字 大五码：台湾，香港 繁体中文 日语 片假名，平假名 UTF-8 包含世界上所有国家最常用的文字，统一 Node支持的编码ASCII UTF-8 Node中使用GBK编码读取文件默认情况下，核心模块是没有提供GBK编码支持的，需要我们去npmjs.com 上去下载一个第三方包 iconv-lite npmjs.com类似于github，里面有很多开源的项目 npm install iconv-lite --save/--save-dev --save 代表把我们这个包的信息记录在package.json --save-dev 开发阶段 gulp --save 生产阶段 angular angular-router npm install iconv-lite --save package.json项目的配置文件 生成：在项目的根目录 npm init -y(默认) 文件和文件夹的操作文件夹的操作创建:mkdir 删除:rmdir 重命名文件夹/文件 rename 判断文件夹/文件是否存在 exists 文件的操作写入文件 writeFile 追加文件 appendFile 判断文件是否存在 exists 重命名文件 rename 删除文件 unlink 监控文件的改变 watchFile 做一个小的demo来巩固我们文件夹和文件的操作我想监控abc/abc.txt，如果发现这个文件一旦更改，就将abc.txt所有的内容，写入到eee/eee.txt中去 步骤:(文件的复制) 1、使用fs.watchFile监控源文件的更改 2、判断eee是否存在，不存在则创建 fs.mkdir 3、读取abc/abc.txt的内容 fs.readFile 4、将读取到的abc.txt的二进制，写入到eee/eee.txt 文件剪切 es6中通过Promise来解决这个异步嵌套过多的问题http://es6.ruanyifeng.com/#docs/promise promise对象.then(xxx) 注意事项1、文件夹必须得程序员自己创建 2、文件可以不用自己创建，当往里面写内容的时候，它就会自动创建 同步和异步以调用同步方法和异步方法为例 同步&amp;异步 同步:如果我们执行的是一个同步方法，必须等着同步方法执行完毕，才能执行后面的代码 异步:如果我们执行的是一个异步方法，不需要等着我们异步方法执行完毕，就可以执行后面的代码 相同点: 调用异步&amp;同步方都可以获取结果 不同点: 1、获取结果的方式不一样，同步通过返回值，异步通过回调函数 2、同步没有回调函数，异步会有回调函数 3、做耗时间的操作，同步会阻塞住，异步不会 开发中如何去选择? 1、耗时间操作用异步 2、其它用同步,同步能保证代码的顺序 其它nodemon 全局第三方包,可以监控我们源代码的更改，如果我们源代码发生了更改，就可以重新运行我们.js文件 安装: npm i nodemon -g 安装成功之后会放在我们node的安装目录下 使用: 在终端使用，比如nodemon , nodemon 你要执行的js文件 本地包&amp;全局包 相同点 1、都要使用npm i 进行安装 2、都是从npmjs.com上面进行下载安装的 不同点 1、安装方式 本地包 npm i xxx --save/--save-dev 全局包 npm i xxx -g 2、安装的地方不一样 本地包，项目的node_modules 全局包，node安装目录或是个人目录 &gt; AppData &gt; Roaming &gt; npm 3、使用场合不一样 本地包:是用在项目中的，为我们项目服务的 全局包:在终端中使用，执行一些指令的 自定义模块参考: http://javascript.ruanyifeng.com/nodejs/module.html#toc4 模块的分类1、核心模块，node本身提供的 http url querystring path fs 2、第三方模块 先安装到我们本地项目中，再使用 npm安装 3、自定义模块 给别的js文件去用 上面三种分别是我们以后可能都会在项目中遇到的这些模块，使用都是使用CommonJS规范的require去加载 自定义模块CommonJS规范认为，一个.js文件就可以看成一个模块，如果我们想把模块中定义的变量，方法，对象给外面的js使用，就必须使用CommonJS提供module将我们需要给外面用的东西，导出去 以自定义计算器为例 注意点在commonjs中导入模块用 require 在commonjs中在模块中导出 使用module.exports 如果是自定义模块，在导入自定义模块的时候，得把路径写完整 require导入的东西，就是别的文件modulu.exports导出的东西]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[NodeJs学习记录一]]></title>
+    <url>%2F2016%2F09%2F10%2FNodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[NodeJS的基本概念NodeJS是什么？ ​ Node官网 官网介绍： Node.js® is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js’ package ecosystem, npm, is the largest ecosystem of open source libraries in the world. js能做什么事? js ---&gt; 浏览器中运行(面向过程---&gt;面向对象) js ---&gt; 后台开发 NodeJS就是使用js代码，来做后台开发 使用NodeJS可以开启一个Web服务，给浏览器提供数据去 展示，并且接收浏览器提交过来的用户产生的数据，存储 到数据库中，方便后面使用(注册) NodeJS能做什么？1、提供数据给浏览器展示 2、保存用户提交过来的数据 3、数据统计与分析 怎么学习比较好1、看官方文档: API怎么用，缺点，都是一些零散的API，没有一个完整的Demo 英语不好就别看了，全英文 2、百度 node快速入门 node使用 3、专业Node的论坛【深入学习】 http://cnodejs.org/ 4、出错之后的网站: www.baidu.com www.stackoverflow.com 使用的时候，搜索英文关键字 Node服务器软件的安装与配置Node.exe的安装一直下一步就可以了 检测是否安装成功 node -v 另外一种安装node的方式 nvm这个软件来安装 node version manger,如果你想同时安装多个node版本 教程:http://www.jianshu.com/p/07c3456e875a 前提: 如果使用我们的nvm安装node，那原先的node得干掉 步骤: 1、安装nvm这个软件: https://github.com/coreybutler/nvm-windows/releases 2、使用上面装好的nvm软件，安装我们需要的node版本了 指令: nvm install 具体的版本号就行了(https://nodejs.org/en/download/releases/) nvm uninstall 具体的版本号 nvm list 查看当前安装了哪些版本 nvm use 具体版本号，切换到某个版本 建议: 你安装一个高一点的稳定的版本即可，因为我们的软件都是向下兼容 系统环境变量及其作用系统环境变量每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作 那配置了环境变量能做到什么事呢？ 在我们终端的任何一个目录下，都可以访问，配置在系统环境变量里面的可执行文件 如何将一个软件的可执行文件配置在我们的系统环境变量中? 步骤： 1、拷贝一个可执行文件所在的目录，比如node.exe所在的目录 `C:\Program Files\nodejs` 2、去系统(次计算机右键属性) &gt; 高级系统设置 &gt; 高级 &gt; 环境变量 &gt; 系统变量 &gt; Path &gt; 填写上你的目录 注意事项: 如果更改了系统的环境变量，就必须把终端重新启动 启动node.exe执行js代码启动(相当于启动Apache服务器)1、在我们的node的安装目录下，去双击我们node.exe 2、在终端输入 node即可 node.exe 退出我们的node.exe1、在终端中输入.exit 2、连续按住两次 CTRL + C 怎么去执行js代码1、直接在启动的node.exe中写代码(在开启的`REPL`环境中写代码执行)【了解】 缺点: 书写不方便，阅读起来也不方便 因为在我们的cmd中写的代码，是放在内存中的，一旦我们退出了node.exe，原先写的代码都没有了 2、把我们写好的代码放在一个单独的js文件中去执行 执行的时候，通过node.exe去执行，具体的写法是这样。（重点） 在终端中输入 node.exe 你要去执行的文件名称 注意点: 1、我们js代码不是在终端中运行的，只是借助终端去启动我们node.exe，并且最终将结果展现在终端里面而已 2、在运行时候，首先你的终端的目录得切换到你要执行的文件的目录下面去，然后使用node 文件名称执行即可 我们nodejs的代码是在一个叫做`REPL`环境中，执行的 REPLJS的执行执行js在浏览器端，我是是要依靠浏览器(js的解析引擎) 在服务器端 nodejs开启的REPL环境 官网的解释: 参考:http://shouce.qdfuns.com/nodejs/repl.html REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块内容空间里面就可以解释执行我们的js代码 例如: 在终端中输入了 node abc.js 做的事情就是，将abc.js中写好的js的逻辑代码扔在启动好的node的内容空间中去运行，我们把启动好的node的这块内存空间称之为REPL环境 模块化思想为什么前端需要有模块化1、解决全局变量名污染的问题 2、把相同功能的代码放在一个模块(一个js文件中)方便后期维护 NodeJS中是如何体现模块化ecmascript5 var function 1、Node本身是基于CommonJS规范， 参考:http://javascript.ruanyifeng.com/nodejs/module.html#toc0 2、Node作者在设计这门语言的时候，就严格按照CommonJS的规范， 将它的API设计成模块化了，比如它将开启Web服务这个功能所有代码都放入一个http模块中 3、Node本质来说就是将相同功能的代码放入到一个.js文件中管理 这篇博客主要整理一下模块的知识模块 作用 http 开启一个Web服务，给浏览器提供服务 url 给浏览器发送请求用，还可以传递参数(GET) querystring 处理浏览器通过GET/POST发送过来的参数 path 查找文件的路径 fs 在服务器端读取文件用的 上面五大核心模块加上其它一些第三方的模块，这个时候，我们就可以做一个管理系统出来了 写代码来体验我们Node中模块化开发思想开启web服务步骤: 1、导入我们需要的核心模块(NodeJS提供的模块我们称之为核心模块) require(&apos;http&apos;) 会返回一个 http对象 2、利用获取到的核心模块的对象，创建一个server对象 3、利用server对象监听浏览器的请求，并且处理(请求-处理-响应) 4、开启web服务开始监听 获取url中的一些相关信息http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123 http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123 在我们的服务器端，想要获取一些东西 1、路径 login，获取我们路径的作用是为了知道浏览器的意图 2、传递过来的参数 zhangsan 123 为了获取我们上面需要的东西，这个时候， node提供了另外一个核心模块来解决我们这些繁琐的问题 url 使用url模块的步骤1、导入url这个核心模块 ​ 2、调用url.parse(url字符串,true)， 如果是true的话代表把我们的username=zhangsan&amp;pwd=123 字符串解析成js对象 es6ECMAScript 6 参考:http://es6.ruanyifeng.com/ 注意点: 写es6的代码最好开启严格模式，让我们在开发阶段写代码更加严谨 可以在每个js代码的最前面加上 `use strict` const&amp;letconst&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的 定义常量 const 定义变量 let 其实和var还是有区别的，const和let在作用域预解析是不会变量提升的 字符串的一些方法字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串， 其实作用相当于es5的indexOf startsWith : 判断字符串是否以什么开头，判断协议头 http:// file:// endsWith : 判断字符串是否以什么结尾，判断文件后缀名 .png .jpg .jpeg 模版字符串作用: 1、格式化字符串，以你想要的格式输出 2、模版：占位替换 语法: `` 箭头函数 E5写法 function add(x,y){ return x + y } E6写法 const add = (x,y) =&gt; { return x + y} 只有一个参数，并且函数块中只有一行代码 我们的函数参数的()可以不写 函数体的 {} return 都可以省略，如下例子 const printName = name =&gt; console.log(&quot;我的名字是 &quot;+name) printName(&quot;小白&quot;)]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SVG使用]]></title>
+    <url>%2F2016%2F06%2F30%2FSVG%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[SVG使用记录 1.绘制矩形 123456&lt;rect x="" y="" rx="" ry="" width="" height=""&gt;&lt;/rect&gt;(x, y): 左上角坐标rx: x轴圆角半径ry: y轴圆角半径width: 长度height: 高度 2.绘制圆 123&lt;circle cx="" cy="" r=""&gt;&lt;/circle&gt; (cx, cy): 圆心 r: 半径 3.绘制椭圆 1234&lt;ellipse cx="" cy="" rx="" ry=""&gt;&lt;/ellipse&gt; (cx, cy): 中心点 rx: x轴半径 ry: y轴半径 4.绘制直线 123&lt;line x1="" y1="" x2="" y2=""&gt;&lt;/line&gt; (x1, y1): 线条的起始点(x2, y2): 线条的结束点 5.绘制折线1&lt;polyline points="x1,y1 x2,y2 x3,y3 .."&gt;&lt;/polyline&gt; 6.绘制多边形 1&lt;polygon points="x1,y1 x2,y2 x3,y3 .."&gt;&lt;/polygon&gt; 7.绘制图像 1&lt;image xlink:href="" width="" height=""&gt;&lt;/image&gt; 8.绘制文本 1234&lt;text x=&quot;&quot; y=&quot;&quot; font-size=&quot;&quot; dx=&quot;&quot; dy=&quot;&quot;&gt;text&lt;/text&gt; (x, y): 文字左下角的起始坐标 dx: 横轴的偏移 dy: 纵轴的偏移 9.渐变 12345678910111213141516&lt;defs&gt;&lt;linearGradient x1="" y1="" x2="" y2=""&gt; &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;&lt;/linearGradient&gt; &lt;radialGradient cx="" cy="" r=""&gt; &lt;stop offset="" style="stop-color:;stop-opacity:;"&gt;&lt;/stop&gt;&lt;/radialGradient&gt;&lt;/defs&gt; offset: 渐变开始的位置 0% - 100%x1: 开始横坐标y1: 开始纵坐标x2: 结束横坐标y2: 结束纵坐标cx: 外层圆心横坐标cy: 外层圆心纵坐标r: 发散的半径 10.滤镜 123456&lt;defs&gt; &lt;filter id=&quot;f1&quot;&gt; &lt;feGaussionBlur stdDeviation=&quot;3&quot;&gt; &lt;/filter&gt;&lt;/defs&gt;&lt;text filter=&quot;url(#f1)&quot;&gt;]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>SVG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[zepto设置select选中兼容问题]]></title>
+    <url>%2F2016%2F05%2F10%2Fzepto%E8%AE%BE%E7%BD%AEselect%E9%80%89%E4%B8%AD%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[zepto设置select选中兼容问题在做个移动小项目的时候，碰到需要选择页数通过ajax不刷新渲染页面的情况，结果遇到两个坑 1.zepto要拿到option的值需要通过下面的方法 12//拿到选中的option的 value值 var value= $("#select option").not(function()&#123; return !this.selected &#125;).val() 2.zepto 设置select选中 需要注意 12//Safari浏览器不兼容，一开始我是这样写的被坑了 $('select').find('option[value="'+key+'"]').attr('selected', true); 12// Safari浏览器兼容 $('select').find('option[value="'+key+'"]').attr('selected', 'selected');]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[git管理工具的使用]]></title>
+    <url>%2F2016%2F04%2F20%2Fgit%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[说说Git 本教程朗朗上口，get it。 git是源代码管理工具，也称为版本控制工具 优势 利于团队的开发，方便后期维护，安全 对个人而言对某个功能修改操作 优势 官网下载git 根据提示，点下一步安装（一般一直点下一步就可以了） bash命令基础在学习git之前，必须先熟悉bash命令的基础用法 命令 功能 参数与 pwd 打印当前目录路径的全名称 ls 显示任意目录 所有文件 -l （显示详细信息，快捷ll=ls -l ） -a（显示隐藏文件）-d 查看目录 cd 切换文件夹 mkdir 创建文件夹 rm 删除文件 -r 子文件一起删除 -f 强制删除 touch 创建文件 date 查看时间 date -s 2017-01-1 修改时间 cat 查看文件内容 cp 复制 选择文件 复制到哪个目录 mv 重命名 移动 移动文件 复制到哪个目录，可重命名 vi vim 编辑文件 i o a 编辑模式 ecs 退出模式 ：！wq 强制保存退出 git bash 基础 命令 作用与注释 git init 当前文件夹进行初始化（被git管理） git status 查看仓库中的相关的文件状态，空文件夹不显示 git add 将指定的文件放到暂存区 ， *=全部 git commit 将暂存区的文件放到主仓库 -m 备注信息 git config user.name 设置用户名，–global 全局设置 git config user.email 设置邮箱，–global 全局设置 git push [地址] master 将本地主仓库中的代码上传到服务器中 git log 查看日志 git pull [地址] master 获取服务器文件，关联你的仓库 git diff 查看同一个文件修改了那些内容 git rm 删除某个文件 git remote add [变量名]&lt;值&gt; 可以保存变量,一般保存仓库地址 git remote 查看存在哪些变量 git remote remove [变量名] 删除变量 git log –oneline 简洁的日志显示，方便查看版本号 git reset –hard [版本号] 回溯到某个版本号 git reflog 查看历史记录的版本号id git clone [地址] 克隆远程库 git checkout – 把对文件的修改在暂存区全部取消 git branch 查看当前分支 git branch [分支名] 创建新分支 git checkout [分支名] 切换到指定分支下面去 git merge [分支名] -m [备注信息] 将指定分支合并到当前分支下 git branch -d [分支名] 删除指定的分支 配置SSH连接github 在本地生成秘钥：ssh-keygen -t rsa 找到秘钥生成的目录，将公钥放到Github中 a、github点击右上角人物头像 b、选择settings菜单 c、选择SSH相关菜单 d、选择添加一个SSH e、输入ssh的名称，已知内容（就是公钥）将公钥放入其中，保存即可 在本地测试 ssh git@github.com看看是否成功Hi chengxc! You’ve successfully authenticated, but GitHub does not provide shell access. 设置文件不让git管理1.在.git同级目录添加一个文件，叫 .gitignore 创建这个文件名的时候， a：文件名：”.gitignore.” b、bash命令：touch .gitignore 2.打开.gitignore进行编辑，一行一行的添加不需要git管理的文件 可以设置同类型的文件：.js .css 也可以设置整个目录： a/–&gt;a目录下面的所有文件 a/.js–&gt;a目录下面的所有js文件 删除服务器中的文件第一种方式： rm 文件名 git add 文件名 git add 文件名 git push 远程服务器 master 第二种方式:推荐使用 git rm 文件名 git commit -m 提交 git push 远程服务器 master 注意事项 如果删除文件由于误操作没有成功，可以通过提示删除，再push到服务器上 无论是创建分支还是合并分支时刻警醒当前位于哪个位置 不要在本地分支上push代码]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo搭建]]></title>
+    <url>%2F2016%2F03%2F23%2Fhexo%E5%90%91%E5%AF%BC%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[github 配合 hexo 搭建博客 域名推荐去万网选一个 个人网站起名简单，整洁为上。 看情况选择后缀，后缀有一定含义，比如cn代表中国 有些后缀需要备案，不推荐 服务器 这个不是必须的 有自己的服务器的话配置好环境和服务，自己管理还要维护 一般免费的不稳定，稳定的不免费 所以推荐用第三方托管的方式 比较好 需要把域名解析到服务器 只需要把你的域名解析成 github.io 的ip（可以用cmd ping 你的gitbub.io 得到ip） 并在github.io 的 settings 设置 Custom domain 为 你的域名 （例如：zeroxie.me） 需要写博客4.1 直接写静态页面（不会有人这么做）4.2 使用现有的一些博客框架（WordPress） 稍微懂一点点PHP 要回搭建PHP的运行环境，还要会配置MySQL4.3 直接自己动手写一个博客系统 需要懂一门后台语言，要懂数据库操作，要懂服务器相关的知识 4.4 现成的框架，Hexo， 你只需要写MarkDown文件，hexo这种框架会自动帮你把所有的markdown文件转换成html，并且帮你将所有的文章进行归类 github提供了静态页面托管服务， github给每一个用户都提供了一个项目的静态页面托管服务，但是一定要注意，一个账户只有一个项目的名额 github静态页面托管服务会给你提供一个域名，让你访问自己的网站 服务器也是github的服务器 Hexo的安装npm install hexo-cli -g Hexo的使用hexo init 初始化博客 hexo new “文章名” 新建一篇文章 sources/_posts/…. hexo g 将md文件生成html hexo s 在本地预览已经编辑好的博客内容 要把生成好的网站发布到 github上 需要注册github账号 在github中创建一个库 库名 github用户名.github.io 配置在博客文件根目录中的_congif.yml文件 deploy: type: git repo: 就是刚才创建的那个库的地址（复制https的地址） branch: master 在博客根目录下执行 npm install hexo-deployer-git –save 在public目录下执行 git init命令 在public目录下执行 hexo d 命令 大功告成 可以通过 github用户名.github.io 直接访问你的博客了]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>github，hexo</tag>
+      </tags>
+  </entry>
+</search>
