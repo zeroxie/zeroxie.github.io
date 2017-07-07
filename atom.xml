@@ -51,9 +51,10 @@
     <link href="http://yoursite.com/2016/09/18/xTemplate%E6%A8%A1%E6%9D%BF%E8%AF%AD%E5%8F%A5%E5%8F%82%E8%80%83/"/>
     <id>http://yoursite.com/2016/09/18/xTemplate模板语句参考/</id>
     <published>2016-09-18T13:02:41.000Z</published>
-    <updated>2017-07-07T01:46:06.216Z</updated>
+    <updated>2017-07-07T05:04:19.249Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="xTemplate模板实例参考"><a href="#xTemplate模板实例参考" class="headerlink" title="xTemplate模板实例参考"></a>xTemplate模板实例参考</h3><a id="more"></a>
+    <content type="html"><![CDATA[<p>###xTemplate模板实例参考</p>
+<a id="more"></a>
 <p>XTemplate是易学易懂的模板语言</p>
 <p>####直接来看这个模板实例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Hello &#123;&#123;name&#125;&#125;</div><div class="line">You have just won $&#123;&#123;value&#125;&#125;!</div><div class="line">&#123;&#123;#if data&#125;&#125;</div><div class="line">    &#123;&#123;#each data&#125;&#125;</div><div class="line">        &#123;&#123;name&#125;&#125;-&#123;&#123;xindex&#125;&#125;/&#123;&#123;xcount&#125;&#125;</div><div class="line">    &#123;&#123;/each&#125;&#125;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
@@ -66,7 +67,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;xTemplate模板实例参考&quot;&gt;&lt;a href=&quot;#xTemplate模板实例参考&quot; class=&quot;headerlink&quot; title=&quot;xTemplate模板实例参考&quot;&gt;&lt;/a&gt;xTemplate模板实例参考&lt;/h3&gt;
+      &lt;p&gt;###xTemplate模板实例参考&lt;/p&gt;
     
     </summary>
     
@@ -608,10 +609,10 @@ require导入的东西，就是别的文件modulu.exports导出的东西
     <link href="http://yoursite.com/2016/09/10/NodeJS%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%E4%B8%80/"/>
     <id>http://yoursite.com/2016/09/10/NodeJS学习记录一/</id>
     <published>2016-09-10T11:10:20.000Z</published>
-    <updated>2017-07-05T08:43:07.529Z</updated>
+    <updated>2017-07-07T05:06:37.229Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="NodeJS的基本概念"><a href="#NodeJS的基本概念" class="headerlink" title="NodeJS的基本概念"></a>NodeJS的基本概念</h1><h2 id="NodeJS是什么？"><a href="#NodeJS是什么？" class="headerlink" title="NodeJS是什么？"></a>NodeJS是什么？</h2><a id="more"></a>
-<p>​       <a href="https://nodejs.org/en/" target="_blank" rel="external">Node官网</a><br>    官网介绍：<br>    Node.js® is a JavaScript runtime built on<br>    Chrome’s V8 JavaScript engine. Node.js uses<br>    an event-driven, non-blocking I/O model that<br>    makes it lightweight and efficient. Node.js’<br>    package ecosystem, npm, is the largest<br>    ecosystem of open source libraries in the<br>    world.</p>
+    <content type="html"><![CDATA[<h2 id="NodeJS的基本概念"><a href="#NodeJS的基本概念" class="headerlink" title="NodeJS的基本概念"></a>NodeJS的基本概念</h2><a id="more"></a>
+<h3 id="NodeJS是什么？"><a href="#NodeJS是什么？" class="headerlink" title="NodeJS是什么？"></a>NodeJS是什么？</h3><p>​       <a href="https://nodejs.org/en/" target="_blank" rel="external">Node官网</a><br>    官网介绍：<br>    Node.js® is a JavaScript runtime built on<br>    Chrome’s V8 JavaScript engine. Node.js uses<br>    an event-driven, non-blocking I/O model that<br>    makes it lightweight and efficient. Node.js’<br>    package ecosystem, npm, is the largest<br>    ecosystem of open source libraries in the<br>    world.</p>
 <pre><code>js能做什么事?
     js ---&gt; 浏览器中运行(面向过程---&gt;面向对象)
     js ---&gt; 后台开发
@@ -620,10 +621,9 @@ NodeJS就是使用js代码，来做后台开发
 使用NodeJS可以开启一个Web服务，给浏览器提供数据去
 展示，并且接收浏览器提交过来的用户产生的数据，存储
 到数据库中，方便后面使用(注册)
-</code></pre><h2 id="NodeJS能做什么？"><a href="#NodeJS能做什么？" class="headerlink" title="NodeJS能做什么？"></a>NodeJS能做什么？</h2><pre><code>1、提供数据给浏览器展示
-2、保存用户提交过来的数据
-3、数据统计与分析
-</code></pre><h2 id="怎么学习比较好"><a href="#怎么学习比较好" class="headerlink" title="怎么学习比较好"></a>怎么学习比较好</h2><pre><code>1、看官方文档:
+</code></pre><p>###NodeJS能做什么？<br>    1、提供数据给浏览器展示<br>    2、保存用户提交过来的数据<br>    3、数据统计与分析</p>
+<p>###怎么学习比较好</p>
+<pre><code>1、看官方文档:
     API怎么用，缺点，都是一些零散的API，没有一个完整的Demo
     英语不好就别看了，全英文
 
@@ -668,7 +668,7 @@ NodeJS就是使用js代码，来做后台开发
 建议:
     你安装一个高一点的稳定的版本即可，因为我们的软件都是向下兼容
 </code></pre><hr>
-<h1 id="系统环境变量及其作用"><a href="#系统环境变量及其作用" class="headerlink" title="系统环境变量及其作用"></a>系统环境变量及其作用</h1><h2 id="系统环境变量"><a href="#系统环境变量" class="headerlink" title="系统环境变量"></a>系统环境变量</h2><pre><code>每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作
+<h2 id="系统环境变量及其作用"><a href="#系统环境变量及其作用" class="headerlink" title="系统环境变量及其作用"></a>系统环境变量及其作用</h2><h3 id="系统环境变量"><a href="#系统环境变量" class="headerlink" title="系统环境变量"></a>系统环境变量</h3><pre><code>每个系统都会提供一种叫做环境变量的东西，用来简化我们去访问某一个应用程序可执行文件(.exe)的操作
 
 那配置了环境变量能做到什么事呢？
     在我们终端的任何一个目录下，都可以访问，配置在系统环境变量里面的可执行文件
@@ -682,10 +682,10 @@ NodeJS就是使用js代码，来做后台开发
 注意事项:
     如果更改了系统的环境变量，就必须把终端重新启动
 </code></pre><hr>
-<h1 id="启动node-exe执行js代码"><a href="#启动node-exe执行js代码" class="headerlink" title="启动node.exe执行js代码"></a>启动node.exe执行js代码</h1><h2 id="启动-相当于启动Apache服务器"><a href="#启动-相当于启动Apache服务器" class="headerlink" title="启动(相当于启动Apache服务器)"></a>启动(相当于启动Apache服务器)</h2><pre><code>1、在我们的node的安装目录下，去双击我们node.exe
+<h2 id="启动node-exe执行js代码"><a href="#启动node-exe执行js代码" class="headerlink" title="启动node.exe执行js代码"></a>启动node.exe执行js代码</h2><h3 id="启动-相当于启动Apache服务器"><a href="#启动-相当于启动Apache服务器" class="headerlink" title="启动(相当于启动Apache服务器)"></a>启动(相当于启动Apache服务器)</h3><pre><code>1、在我们的node的安装目录下，去双击我们node.exe
 
 2、在终端输入 node即可 node.exe
-</code></pre><h2 id="退出我们的node-exe"><a href="#退出我们的node-exe" class="headerlink" title="退出我们的node.exe"></a>退出我们的node.exe</h2><pre><code>1、在终端中输入.exit
+</code></pre><h3 id="退出我们的node-exe"><a href="#退出我们的node-exe" class="headerlink" title="退出我们的node.exe"></a>退出我们的node.exe</h3><pre><code>1、在终端中输入.exit
 
 2、连续按住两次 CTRL + C
 </code></pre><h2 id="怎么去执行js代码"><a href="#怎么去执行js代码" class="headerlink" title="怎么去执行js代码"></a>怎么去执行js代码</h2><pre><code>1、直接在启动的node.exe中写代码(在开启的`REPL`环境中写代码执行)【了解】
@@ -705,7 +705,7 @@ NodeJS就是使用js代码，来做后台开发
 
     我们nodejs的代码是在一个叫做`REPL`环境中，执行的
 </code></pre><hr>
-<h1 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h1><h2 id="JS的执行"><a href="#JS的执行" class="headerlink" title="JS的执行"></a>JS的执行</h2><pre><code>执行js在浏览器端，我是是要依靠浏览器(js的解析引擎)
+<h2 id="REPL"><a href="#REPL" class="headerlink" title="REPL"></a>REPL</h2><h3 id="JS的执行"><a href="#JS的执行" class="headerlink" title="JS的执行"></a>JS的执行</h3><pre><code>执行js在浏览器端，我是是要依靠浏览器(js的解析引擎)
 
 在服务器端 nodejs开启的REPL环境
 
@@ -717,9 +717,9 @@ REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块�
 例如:
     在终端中输入了 node abc.js 做的事情就是，将abc.js中写好的js的逻辑代码扔在启动好的node的内容空间中去运行，我们把启动好的node的这块内存空间称之为REPL环境
 </code></pre><hr>
-<h1 id="模块化思想"><a href="#模块化思想" class="headerlink" title="模块化思想"></a>模块化思想</h1><h2 id="为什么前端需要有模块化"><a href="#为什么前端需要有模块化" class="headerlink" title="为什么前端需要有模块化"></a>为什么前端需要有模块化</h2><pre><code>1、解决全局变量名污染的问题
+<h2 id="模块化思想"><a href="#模块化思想" class="headerlink" title="模块化思想"></a>模块化思想</h2><h3 id="为什么前端需要有模块化"><a href="#为什么前端需要有模块化" class="headerlink" title="为什么前端需要有模块化"></a>为什么前端需要有模块化</h3><pre><code>1、解决全局变量名污染的问题
 2、把相同功能的代码放在一个模块(一个js文件中)方便后期维护
-</code></pre><h2 id="NodeJS中是如何体现模块化"><a href="#NodeJS中是如何体现模块化" class="headerlink" title="NodeJS中是如何体现模块化"></a>NodeJS中是如何体现模块化</h2><pre><code>ecmascript5 var function
+</code></pre><h3 id="NodeJS中是如何体现模块化"><a href="#NodeJS中是如何体现模块化" class="headerlink" title="NodeJS中是如何体现模块化"></a>NodeJS中是如何体现模块化</h3><pre><code>ecmascript5 var function
 
 1、Node本身是基于CommonJS规范，
 参考:http://javascript.ruanyifeng.com/nodejs/module.html#toc0
@@ -728,7 +728,7 @@ REPL就是当通过node.exe启动之后开辟的一块内存空间，在这块�
 将它的API设计成模块化了，比如它将开启Web服务这个功能所有代码都放入一个http模块中
 
 3、Node本质来说就是将相同功能的代码放入到一个.js文件中管理
-</code></pre><h2 id="这篇博客主要整理一下模块的知识"><a href="#这篇博客主要整理一下模块的知识" class="headerlink" title="这篇博客主要整理一下模块的知识"></a>这篇博客主要整理一下模块的知识</h2><pre><code>模块          作用
+</code></pre><h3 id="这篇博客主要整理一下模块的知识"><a href="#这篇博客主要整理一下模块的知识" class="headerlink" title="这篇博客主要整理一下模块的知识"></a>这篇博客主要整理一下模块的知识</h3><pre><code>模块          作用
 http      开启一个Web服务，给浏览器提供服务
 url          给浏览器发送请求用，还可以传递参数(GET)
 querystring 处理浏览器通过GET/POST发送过来的参数
@@ -737,7 +737,7 @@ fs          在服务器端读取文件用的
 
 上面五大核心模块加上其它一些第三方的模块，这个时候，我们就可以做一个管理系统出来了
 </code></pre><hr>
-<h1 id="写代码来体验我们Node中模块化开发思想"><a href="#写代码来体验我们Node中模块化开发思想" class="headerlink" title="写代码来体验我们Node中模块化开发思想"></a>写代码来体验我们Node中模块化开发思想</h1><h2 id="开启web服务"><a href="#开启web服务" class="headerlink" title="开启web服务"></a>开启web服务</h2><pre><code>步骤:
+<h2 id="写代码来体验我们Node中模块化开发思想"><a href="#写代码来体验我们Node中模块化开发思想" class="headerlink" title="写代码来体验我们Node中模块化开发思想"></a>写代码来体验我们Node中模块化开发思想</h2><h3 id="开启web服务"><a href="#开启web服务" class="headerlink" title="开启web服务"></a>开启web服务</h3><pre><code>步骤:
     1、导入我们需要的核心模块(NodeJS提供的模块我们称之为核心模块)
     require(&apos;http&apos;) 会返回一个 http对象
 
@@ -746,7 +746,7 @@ fs          在服务器端读取文件用的
     3、利用server对象监听浏览器的请求，并且处理(请求-处理-响应)
 
     4、开启web服务开始监听
-</code></pre><h2 id="获取url中的一些相关信息"><a href="#获取url中的一些相关信息" class="headerlink" title="获取url中的一些相关信息"></a>获取url中的一些相关信息</h2><pre><code>http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123
+</code></pre><h3 id="获取url中的一些相关信息"><a href="#获取url中的一些相关信息" class="headerlink" title="获取url中的一些相关信息"></a>获取url中的一些相关信息</h3><pre><code>http://127.0.0.1:8899/login?username=zhangsan&amp;pwd=123
 
 http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123
 
@@ -757,36 +757,36 @@ http://127.0.0.1:8899/register?username=zhangsan&amp;pwd=123
 
 为了获取我们上面需要的东西，这个时候，
 node提供了另外一个核心模块来解决我们这些繁琐的问题 url
-</code></pre><h2 id="使用url模块的步骤"><a href="#使用url模块的步骤" class="headerlink" title="使用url模块的步骤"></a>使用url模块的步骤</h2><pre><code>1、导入url这个核心模块
+</code></pre><h3 id="使用url模块的步骤"><a href="#使用url模块的步骤" class="headerlink" title="使用url模块的步骤"></a>使用url模块的步骤</h3><pre><code>1、导入url这个核心模块
 </code></pre><p>​    </p>
 <pre><code>2、调用url.parse(url字符串,true)，
 如果是true的话代表把我们的username=zhangsan&amp;pwd=123 字符串解析成js对象
 </code></pre><hr>
-<h1 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h1><pre><code>ECMAScript 6
+<h2 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h2><pre><code>ECMAScript 6
 参考:http://es6.ruanyifeng.com/
 
 注意点:    
     写es6的代码最好开启严格模式，让我们在开发阶段写代码更加严谨
     可以在每个js代码的最前面加上 `use strict`
-</code></pre><h2 id="const-amp-let"><a href="#const-amp-let" class="headerlink" title="const&amp;let"></a>const&amp;let</h2><pre><code>const&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的
+</code></pre><h3 id="const-amp-let"><a href="#const-amp-let" class="headerlink" title="const&amp;let"></a>const&amp;let</h3><pre><code>const&amp;let其实是对var，认为就相当于es5中var，就是用来定义变量/常量的
 
 定义常量 const 
 
 定义变量 let
 </code></pre><p>   其实和var还是有区别的，const和let在作用域预解析是不会变量提升的</p>
-<h2 id="字符串的一些方法"><a href="#字符串的一些方法" class="headerlink" title="字符串的一些方法"></a>字符串的一些方法</h2><pre><code>字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串，
+<h3 id="字符串的一些方法"><a href="#字符串的一些方法" class="headerlink" title="字符串的一些方法"></a>字符串的一些方法</h3><pre><code>字符串.includes(&apos;字符串&apos;) 判断某一个字符串中是否包含另外一个字符串，
 其实作用相当于es5的indexOf
 
 startsWith : 判断字符串是否以什么开头，判断协议头 http:// file://
 
 endsWith : 判断字符串是否以什么结尾，判断文件后缀名 .png .jpg .jpeg
-</code></pre><h2 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h2><pre><code>作用:
+</code></pre><h3 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h3><pre><code>作用:
     1、格式化字符串，以你想要的格式输出
     2、模版：占位替换
 
 语法:
     ``
-</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>   E5写法<br>    function add(x,y){<br>          return x + y<br>          }<br>   E6写法<br>    const add = (x,y) =&gt; {<br>    return x + y}<br>    只有一个参数，并且函数块中只有一行代码<br>    我们的函数参数的<code>()</code>可以不写<br>    函数体的 <code>{}</code> return 都可以省略，如下例子</p>
+</code></pre><h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3><p>   E5写法<br>    function add(x,y){<br>          return x + y<br>          }<br>   E6写法<br>    const add = (x,y) =&gt; {<br>    return x + y}<br>    只有一个参数，并且函数块中只有一行代码<br>    我们的函数参数的<code>()</code>可以不写<br>    函数体的 <code>{}</code> return 都可以省略，如下例子</p>
 <pre><code>const printName = name =&gt; console.log(&quot;我的名字是 &quot;+name)
 printName(&quot;小白&quot;)
 </code></pre><hr>
@@ -794,7 +794,7 @@ printName(&quot;小白&quot;)
     
     <summary type="html">
     
-      &lt;h1 id=&quot;NodeJS的基本概念&quot;&gt;&lt;a href=&quot;#NodeJS的基本概念&quot; class=&quot;headerlink&quot; title=&quot;NodeJS的基本概念&quot;&gt;&lt;/a&gt;NodeJS的基本概念&lt;/h1&gt;&lt;h2 id=&quot;NodeJS是什么？&quot;&gt;&lt;a href=&quot;#NodeJS是什么？&quot; class=&quot;headerlink&quot; title=&quot;NodeJS是什么？&quot;&gt;&lt;/a&gt;NodeJS是什么？&lt;/h2&gt;
+      &lt;h2 id=&quot;NodeJS的基本概念&quot;&gt;&lt;a href=&quot;#NodeJS的基本概念&quot; class=&quot;headerlink&quot; title=&quot;NodeJS的基本概念&quot;&gt;&lt;/a&gt;NodeJS的基本概念&lt;/h2&gt;
     
     </summary>
     
@@ -814,18 +814,18 @@ printName(&quot;小白&quot;)
     
     <content type="html"><![CDATA[<h2 id="SVG使用记录"><a href="#SVG使用记录" class="headerlink" title="SVG使用记录"></a>SVG使用记录</h2><a id="more"></a>
 <p>1.绘制矩形</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;rect x=<span class="string">""</span> y=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/rect&gt;</div><div class="line">(x, y): 左上角坐标</div><div class="line">rx: x轴圆角半径</div><div class="line">ry: y轴圆角半径</div><div class="line">width: 长度</div><div class="line">height: 高度</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;rect x=<span class="string">""</span> y=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">rect</span>&gt;</span></span></div><div class="line">(x, y): 左上角坐标</div><div class="line">rx: x轴圆角半径</div><div class="line">ry: y轴圆角半径</div><div class="line">width: 长度</div><div class="line">height: 高度</div></pre></td></tr></table></figure>
 <p>2.绘制圆</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx=<span class="string">""</span> cy=<span class="string">""</span> r=<span class="string">""</span>&gt;&lt;/circle&gt;</div><div class="line"> (cx, cy): 圆心</div><div class="line"> r: 半径</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;circle cx=<span class="string">""</span> cy=<span class="string">""</span> r=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">circle</span>&gt;</span></span></div><div class="line"> (cx, cy): 圆心</div><div class="line"> r: 半径</div></pre></td></tr></table></figure>
 <p>3.绘制椭圆</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx=<span class="string">""</span> cy=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span>&gt;&lt;/ellipse&gt;</div><div class="line">    (cx, cy): 中心点</div><div class="line">    rx: x轴半径</div><div class="line">    ry: y轴半径</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;ellipse cx=<span class="string">""</span> cy=<span class="string">""</span> rx=<span class="string">""</span> ry=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">ellipse</span>&gt;</span></span></div><div class="line">    (cx, cy): 中心点</div><div class="line">    rx: x轴半径</div><div class="line">    ry: y轴半径</div></pre></td></tr></table></figure>
 <p>4.绘制直线</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;line x1=<span class="string">""</span> y1=<span class="string">""</span> x2=<span class="string">""</span> y2=<span class="string">""</span>&gt;&lt;/line&gt; </div><div class="line">(x1, y1): 线条的起始点</div><div class="line">(x2, y2): 线条的结束点</div></pre></td></tr></table></figure>
-<p>5.绘制折线<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polyline&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;line x1=<span class="string">""</span> y1=<span class="string">""</span> x2=<span class="string">""</span> y2=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">line</span>&gt;</span></span> </div><div class="line">(x1, y1): 线条的起始点</div><div class="line">(x2, y2): 线条的结束点</div></pre></td></tr></table></figure>
+<p>5.绘制折线<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polyline points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">polyline</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>6.绘制多边形</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;&lt;/polygon&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;polygon points=<span class="string">"x1,y1   x2,y2  x3,y3 .."</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">polygon</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p>7.绘制图像</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;image xlink:href=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;&lt;/image&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;image xlink:href=<span class="string">""</span> width=<span class="string">""</span> height=<span class="string">""</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p>8.绘制文本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;text x=&quot;&quot; y=&quot;&quot;  font-size=&quot;&quot; dx=&quot;&quot; dy=&quot;&quot;&gt;text&lt;/text&gt;</div><div class="line">   (x, y): 文字左下角的起始坐标</div><div class="line">   dx: 横轴的偏移</div><div class="line">   dy: 纵轴的偏移</div></pre></td></tr></table></figure>
 <p>9.渐变</p>
