@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-07T05:11:12.524Z</updated>
+  <updated>2017-07-07T08:45:27.218Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,14 @@
   
   <entry>
     <title>第三方登录服务的使用心得</title>
-    <link href="http://yoursite.com/2016/10/27/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
-    <id>http://yoursite.com/2016/10/27/第三方登录服务使用心得/</id>
-    <published>2016-10-27T12:24:42.000Z</published>
-    <updated>2017-07-07T05:11:12.524Z</updated>
+    <link href="http://yoursite.com/2017/03/20/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
+    <id>http://yoursite.com/2017/03/20/第三方登录服务使用心得/</id>
+    <published>2017-03-20T12:24:42.000Z</published>
+    <updated>2017-07-07T08:45:27.218Z</updated>
     
-    <content type="html"><![CDATA[<p>####前提:<br>1、去微博、微信、QQ开发者中心去注册成为他的开发者 <a href="http://open.weibo.com/" target="_blank" rel="external">http://open.weibo.com/</a></p>
-<p>2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息</p>
+    <content type="html"><![CDATA[<p>###提前准备:</p>
+<p>1、去微博、微信、QQ开发者中心去注册成为他的开发者 <a href="http://open.weibo.com/" target="_blank" rel="external">http://open.weibo.com/</a></p>
+<p>2、去开放平台的后台，注册某个App的相关信息</p>
 <a id="more"></a>
 <p>####正式接入:<br>1、去下载它的sdk，就是一个/多个js文件(有点类似于下载jQuery.js)</p>
 <p>2、导入到你的项目中，一般都是导入一个js文件，一般都是CDN导入</p>
@@ -35,8 +36,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;####前提:&lt;br&gt;1、去微博、微信、QQ开发者中心去注册成为他的开发者 &lt;a href=&quot;http://open.weibo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://open.weibo.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息&lt;/p&gt;
+      &lt;p&gt;###提前准备:&lt;/p&gt;
+&lt;p&gt;1、去微博、微信、QQ开发者中心去注册成为他的开发者 &lt;a href=&quot;http://open.weibo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://open.weibo.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2、去开放平台的后台，注册某个App的相关信息&lt;/p&gt;
     
     </summary>
     
