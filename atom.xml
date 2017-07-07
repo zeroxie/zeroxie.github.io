@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-05T09:05:27.532Z</updated>
+  <updated>2017-07-07T05:11:12.524Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>第三方登录服务</title>
+    <title>第三方登录服务的使用心得</title>
     <link href="http://yoursite.com/2016/10/27/%E7%AC%AC%E4%B8%89%E6%96%B9%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"/>
     <id>http://yoursite.com/2016/10/27/第三方登录服务使用心得/</id>
     <published>2016-10-27T12:24:42.000Z</published>
-    <updated>2017-07-05T09:05:27.532Z</updated>
+    <updated>2017-07-07T05:11:12.524Z</updated>
     
-    <content type="html"><![CDATA[<p>###第三方登录服务的使用心得<br><a id="more"></a></p>
-<p>####前提:<br>1、去微博、微信、QQ开发者中心去注册成为他的开发者 <a href="http://open.weibo.com/" target="_blank" rel="external">http://open.weibo.com/</a></p>
+    <content type="html"><![CDATA[<p>####前提:<br>1、去微博、微信、QQ开发者中心去注册成为他的开发者 <a href="http://open.weibo.com/" target="_blank" rel="external">http://open.weibo.com/</a></p>
 <p>2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息</p>
+<a id="more"></a>
 <p>####正式接入:<br>1、去下载它的sdk，就是一个/多个js文件(有点类似于下载jQuery.js)</p>
 <p>2、导入到你的项目中，一般都是导入一个js文件，一般都是CDN导入</p>
 <p>3、调用它里面特定的接口(比如登录)</p>
@@ -35,7 +35,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;###第三方登录服务的使用心得&lt;br&gt;
+      &lt;p&gt;####前提:&lt;br&gt;1、去微博、微信、QQ开发者中心去注册成为他的开发者 &lt;a href=&quot;http://open.weibo.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://open.weibo.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2、去开放平台的后台，注册某个App的相关信息，注册慢慢买的信息&lt;/p&gt;
     
     </summary>
     
@@ -51,11 +52,10 @@
     <link href="http://yoursite.com/2016/09/18/xTemplate%E6%A8%A1%E6%9D%BF%E8%AF%AD%E5%8F%A5%E5%8F%82%E8%80%83/"/>
     <id>http://yoursite.com/2016/09/18/xTemplate模板语句参考/</id>
     <published>2016-09-18T13:02:41.000Z</published>
-    <updated>2017-07-07T05:04:19.249Z</updated>
+    <updated>2017-07-07T05:13:14.076Z</updated>
     
-    <content type="html"><![CDATA[<p>###xTemplate模板实例参考</p>
+    <content type="html"><![CDATA[<p>XTemplate是易学易懂的模板语言</p>
 <a id="more"></a>
-<p>XTemplate是易学易懂的模板语言</p>
 <p>####直接来看这个模板实例</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Hello &#123;&#123;name&#125;&#125;</div><div class="line">You have just won $&#123;&#123;value&#125;&#125;!</div><div class="line">&#123;&#123;#if data&#125;&#125;</div><div class="line">    &#123;&#123;#each data&#125;&#125;</div><div class="line">        &#123;&#123;name&#125;&#125;-&#123;&#123;xindex&#125;&#125;/&#123;&#123;xcount&#125;&#125;</div><div class="line">    &#123;&#123;/each&#125;&#125;</div><div class="line">&#123;&#123;/if&#125;&#125;</div></pre></td></tr></table></figure>
 <pre><code>对应要填充的JSON：
@@ -67,7 +67,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;###xTemplate模板实例参考&lt;/p&gt;
+      &lt;p&gt;XTemplate是易学易懂的模板语言&lt;/p&gt;
     
     </summary>
     
