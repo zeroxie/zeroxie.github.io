@@ -1,0 +1,1323 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="http," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="码诗园" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在查询CORS的时候在MDN上看到的资料，读了几遍，对HTTP加深了不少理解">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域资源共享">
+<meta property="og:url" content="http://yoursite.com/2017/03/26/跨域资源共享cors/index.html">
+<meta property="og:site_name" content="码诗园">
+<meta property="og:description" content="在查询CORS的时候在MDN上看到的资料，读了几遍，对HTTP加深了不少理解">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/14295/CORS_principle.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/14293/simple_req.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/14289/prelight.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/14291/cred-req.png">
+<meta property="og:updated_time" content="2017-07-25T02:04:08.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域资源共享">
+<meta name="twitter:description" content="在查询CORS的时候在MDN上看到的资料，读了几遍，对HTTP加深了不少理解">
+<meta name="twitter:image" content="https://mdn.mozillademos.org/files/14295/CORS_principle.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '谢晓驰'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/26/跨域资源共享cors/"/>
+
+
+
+
+
+  <title>跨域资源共享 | 码诗园</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?41d11fd6d983b317e91d1279ee13ce54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">码诗园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益活动
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/26/跨域资源共享cors/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谢 晓 驰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/zero.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="码诗园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">跨域资源共享</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T19:59:05+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在查询CORS的时候在MDN上看到的资料，读了几遍，对HTTP加深了不少理解</p>
+<a id="more"></a>
+<h2 id="HTTP访问控制（CORS）"><a href="#HTTP访问控制（CORS）" class="headerlink" title="HTTP访问控制（CORS）"></a>HTTP访问控制（CORS）</h2><p>当一个资源从与该资源本身所在的服务器不同的域或端口不同的域或不同的端口请求一个资源时，资源会发起一个<strong>跨域 HTTP 请求</strong>。 </p>
+<p>比如，站点 <a href="http://domain-a.com" target="_blank" rel="external">http://domain-a.com</a> 的某 HTML 页面通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Img#Attributes" target="_blank" rel="external"> 的 src </a>请求 <a href="http://domain-b.com/image.jpg。网络上的许多页面都会加载来自不同域的CSS样式表，图像和脚本等资源。" target="_blank" rel="external">http://domain-b.com/image.jpg。网络上的许多页面都会加载来自不同域的CSS样式表，图像和脚本等资源。</a></p>
+<p>出于安全考虑，浏览器会限制从脚本内发起的跨域HTTP请求。例如，<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch </a>遵循<a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="external">同源策略</a>。因此，使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a>或 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch</a> 的Web应用程序只能将HTTP请求发送到其自己的域。为了改进Web应用程序，开发人员要求浏览器厂商允许跨域请求。</p>
+<p>  （译者注：这段描述跨域不准确，跨域并非不一定是浏览器限制了发起跨站请求，而也可能是跨站请求可以正常发起，但是返回结果被浏览器拦截了。最好的例子是 CSRF 跨站攻击原理，请求是发送到了后端服务器无论是否跨域！注意：有些浏览器不允许从 HTTPS 的域跨域访问 HTTP，比如  Chrome 和 Firefox，这些浏览器在请求还未发出的时候就会拦截请求，这是一个特例。）</p>
+<p><img src="https://mdn.mozillademos.org/files/14295/CORS_principle.png" alt="img"></p>
+<p>跨域资源共享（ <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" target="_blank" rel="external">CORS</a> ）机制允许 Web 应用服务器进行跨域访问控制，从而使跨域数据传输得以安全进行。浏览器支持在 API 容器中（例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch</a> ）使用 CORS，以降低跨域 HTTP 请求所带来的风险。</p>
+<p>这篇文章适用于网站管理员、后端和前端开发者。CORS 需要客户端和服务器同时支持。目前，所有浏览器都支持该机制。 对于服务端的支持，开发者可以阅读补充材料 <a href="https://developer.mozilla.org/En/Server-Side_Access_Control" target="_blank" rel="external">cross-origin sharing from a server perspective (with PHP code snippets)</a> 。</p>
+<p>跨域资源共享标准（ <a href="http://www.w3.org/TR/cors/" target="_blank" rel="external">cross-origin sharing standard</a> ）允许在下列场景中使用跨域 HTTP 请求：</p>
+<ul>
+<li>前文提到的由 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch</a> 发起的跨域 HTTP 请求。</li>
+<li>Web 字体 (CSS 中通过<code>@font-face</code>使用跨域字体资源), <a href="http://www.webfonts.info/wiki/index.php?title=%40font-face_support_in_Firefox" target="_blank" rel="external">因此，网站就可以发布 TrueType 字体资源，并只允许已授权网站进行跨站调用</a>。</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Using_textures_in_WebGL" target="_blank" rel="external">WebGL 贴图</a></li>
+<li>使用 <code>drawImage</code> 将 Images/video 画面绘制到 canvas</li>
+<li>样式表（使用 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSSOM_View" target="_blank" rel="external">CSSOM</a>）</li>
+<li>Scripts (未处理的异常)</li>
+</ul>
+<p>本文概述了跨域资源共享机制及其所涉及的 HTTP 首部字段。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>跨域资源共享标准新增了一组 HTTP 首部字段，允许服务器声明哪些源站有权限访问哪些资源。另外，规范要求，对那些可能对服务器数据产生副作用的 HTTP 请求方法（特别是 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET" target="_blank" rel="external"><code>GET</code></a> 以外的 HTTP 请求，或者搭配某些 MIME 类型的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="external"><code>POST</code></a> 请求），浏览器必须首先使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="external"><code>OPTIONS</code></a> 方法发起一个预检请求（preflight request），从而获知服务端是否允许该跨域请求。服务器确认允许之后，才发起实际的 HTTP 请求。在预检请求的返回中，服务器端也可以通知客户端，是否需要携带身份凭证（包括 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies" target="_blank" rel="external">Cookies </a>和 HTTP 认证相关数据）。</p>
+<p>接下来的内容将讨论相关场景，并剖析该机制所涉及的 HTTP 首部字段。</p>
+<h2 id="若干访问控制场景"><a href="#若干访问控制场景" class="headerlink" title="若干访问控制场景"></a>若干访问控制场景</h2><p>这里，我们使用三个场景来解释跨域资源共享机制的工作原理。这些例子都使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 对象。</p>
+<p>本文中的 JavaScript 代码片段都可以从 <a href="http://arunranga.com/examples/access-control/" target="_blank" rel="external">http://arunranga.com/examples/access-control/</a> 获得。另外，使用支持跨域  <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 的浏览器访问该地址，可以看到代码的实际运行结果。</p>
+<p>关于服务端对跨域资源共享的支持的讨论，请参见这篇文章： <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Server-Side_Access_Control" target="_blank" rel="external">Server-Side_Access_Control (CORS)</a>。</p>
+<h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><p>某些请求不会触发 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#Preflighted_requests" target="_blank" rel="external">CORS 预检请求</a>。本文称这样的请求为“简单请求”，请注意，该术语并不属于 <a href="https://fetch.spec.whatwg.org/" target="_blank" rel="external">Fetch</a> （其中定义了 CORS）规范。若请求满足所有下述条件，则该请求可视为“简单请求”：</p>
+<ul>
+<li>使用下列方法之一：<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET" target="_blank" rel="external"><code>GET</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/HEAD" target="_blank" rel="external"><code>HEAD</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST" target="_blank" rel="external"><code>POST</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="external"><code>Content-Type</code></a> ：//注:仅当POST方法的Content-Type值等于下列之一才算作简单请求<code>text/plain``multipart/form-data``application/x-www-form-urlencoded</code></li>
+</ul>
+</li>
+<li>Fetch 规范定义了<a href="https://fetch.spec.whatwg.org/#cors-safelisted-request-header" target="_blank" rel="external">对 CORS 安全的首部字段集合</a>，不得人为设置该集合之外的其他首部字段。该集合为：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept" target="_blank" rel="external"><code>Accept</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="external"><code>Accept-Language</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language" target="_blank" rel="external"><code>Content-Language</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="external"><code>Content-Type</code></a> （需要注意额外的限制）<code>DPR``Downlink``Save-Data``Viewport-Width``Width</code></li>
+<li>​</li>
+</ul>
+<p><strong>注意:</strong> 这些跨域请求与浏览器发出的其他跨域请求并无二致。如果服务器未返回正确的响应首部，则请求方不会收到任何数据。因此，那些不允许跨域请求的网站无需为这一新的 HTTP 访问控制特性担心。</p>
+<p><strong>注意:</strong> WebKit Nightly 和 Safari Technology Preview 为<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept" target="_blank" rel="external"><code>Accept</code></a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="external"><code>Accept-Language</code></a>, 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language" target="_blank" rel="external"><code>Content-Language</code></a> 首部字段的值添加了额外的限制。如果这些首部字段的值是“非标准”的，WebKit/Safari 就不会将这些请求视为“简单请求”。WebKit/Safari 并没有在文档中列出哪些值是“非标准”的，不过我们可以在这里找到相关讨论：<a href="https://bugs.webkit.org/show_bug.cgi?id=165178" target="_blank" rel="external">Require preflight for non-standard CORS-safelisted request headers Accept, Accept-Language, and Content-Language</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=165566" target="_blank" rel="external">Allow commas in Accept, Accept-Language, and Content-Language request headers for simple CORS</a>, and <a href="https://bugs.webkit.org/show_bug.cgi?id=166363" target="_blank" rel="external">Switch to a blacklist model for restricted Accept headers in simple CORS requests</a>。其它浏览器并不支持这些额外的限制，因为它们不属于规范的一部分。</p>
+<p>比如说，假如站点 <a href="http://foo.example" target="_blank" rel="external">http://foo.example</a> 的网页应用想要访问 <a href="http://bar.other" target="_blank" rel="external">http://bar.other</a> 的资源。<a href="http://foo.example" target="_blank" rel="external">http://foo.example</a> 的网页中可能包含类似于下面的 JavaScript 代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var invocation = new XMLHttpRequest();</div><div class="line">var url = &apos;http://bar.other/resources/public-data/&apos;;</div><div class="line">   </div><div class="line">function callOtherDomain() &#123;</div><div class="line">  if(invocation) &#123;    </div><div class="line">    invocation.open(&apos;GET&apos;, url, true);</div><div class="line">    invocation.onreadystatechange = handler;</div><div class="line">    invocation.send(); </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>客户端和服务器之间使用 CORS 首部字段来处理跨域权限：</p>
+<p><img src="https://mdn.mozillademos.org/files/14293/simple_req.png" alt="img"></p>
+<p>分别检视请求报文和响应报文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">GET /resources/public-data/ HTTP/1.1</div><div class="line">Host: bar.other</div><div class="line">User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">Accept-Language: en-us,en;q=0.5</div><div class="line">Accept-Encoding: gzip,deflate</div><div class="line">Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7</div><div class="line">Connection: keep-alive</div><div class="line">Referer: http://foo.example/examples/access-control/simpleXSInvocation.html</div><div class="line">Origin: http://foo.example</div><div class="line"></div><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 01 Dec 2008 00:23:53 GMT</div><div class="line">Server: Apache/2.0.61 </div><div class="line">Access-Control-Allow-Origin: *</div><div class="line">Keep-Alive: timeout=2, max=100</div><div class="line">Connection: Keep-Alive</div><div class="line">Transfer-Encoding: chunked</div><div class="line">Content-Type: application/xml</div><div class="line"></div><div class="line">[XML Data]</div></pre></td></tr></table></figure>
+<p>第 1~10 行是请求首部。第10行 的请求首部字段 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Origin" target="_blank" rel="external"><code>Origin</code></a> 表明该请求来源于 <code>http://foo.exmaple</code>。</p>
+<p>第 13~22 行是来自于 <a href="http://bar.other" target="_blank" rel="external">http://bar.other</a> 的服务端响应。响应中携带了响应首部字段 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" target="_blank" rel="external"><code>Access-Control-Allow-Origin</code></a>（第 16 行）。使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Origin" target="_blank" rel="external"><code>Origin</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" target="_blank" rel="external"><code>Access-Control-Allow-Origin</code></a> 就能完成最简单的访问控制。本例中，服务端返回的 <code>Access-Control-Allow-Origin: *</code> 表明，该资源可以被<strong>任意</strong>外域访问。如果服务端仅允许来自 <a href="http://foo.example" target="_blank" rel="external">http://foo.example</a> 的访问，该首部字段的内容如下：</p>
+<p><code>Access-Control-Allow-Origin: http://foo.example</code></p>
+<p>现在，除了 <a href="http://foo.example，其它外域均不能访问该资源（该策略由请求首部中的" target="_blank" rel="external">http://foo.example，其它外域均不能访问该资源（该策略由请求首部中的</a> ORIGIN 字段定义，见第10行）。<code>Access-Control-Allow-Origin</code> 应当为 * 或者包含由 Origin 首部字段所指明的域名。</p>
+<h3 id="预检请求"><a href="#预检请求" class="headerlink" title="预检请求"></a>预检请求</h3><p>与前述简单请求不同，“需预检的请求”要求必须首先使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="external"><code>OPTIONS</code></a>   方法发起一个预检请求到服务器，以获知服务器是否允许该实际请求。”预检请求“的使用，可以避免跨域请求对服务器的用户数据产生未预期的影响。</p>
+<p>当请求满足下述任一条件时，即应首先发送预检请求：</p>
+<ul>
+<li>使用了下面任一 HTTP 方法：<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/PUT" target="_blank" rel="external"><code>PUT</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/DELETE" target="_blank" rel="external"><code>DELETE</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/CONNECT" target="_blank" rel="external"><code>CONNECT</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="external"><code>OPTIONS</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/TRACE" target="_blank" rel="external"><code>TRACE</code></a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/PATCH" target="_blank" rel="external"><code>PATCH</code></a></li>
+</ul>
+</li>
+<li>人为设置了<a href="https://fetch.spec.whatwg.org/#cors-safelisted-request-header" target="_blank" rel="external">对 CORS 安全的首部字段集合</a>之外的其他首部字段。该集合为：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept" target="_blank" rel="external"><code>Accept</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="external"><code>Accept-Language</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language" target="_blank" rel="external"><code>Content-Language</code></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="external"><code>Content-Type</code></a> (but note the additional requirements below)<code>DPR``Downlink``Save-Data``Viewport-Width``Width</code></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="external"><code>Content-Type</code></a> 的值不属于下列之一:<code>application/x-www-form-urlencoded``multipart/form-data``text/plain</code></li>
+</ul>
+<p><strong>注意:</strong> WebKit Nightly 和 Safari Technology Preview 为<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept" target="_blank" rel="external"><code>Accept</code></a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="external"><code>Accept-Language</code></a>, 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Language" target="_blank" rel="external"><code>Content-Language</code></a> 首部字段的值添加了额外的限制。如果这些首部字段的值是“非标准”的，WebKit/Safari 就不会将这些请求视为“简单请求”。WebKit/Safari 并没有在文档中列出哪些值是“非标准”的，不过我们可以在这里找到相关讨论：<a href="https://bugs.webkit.org/show_bug.cgi?id=165178" target="_blank" rel="external">Require preflight for non-standard CORS-safelisted request headers Accept, Accept-Language, and Content-Language</a>, <a href="https://bugs.webkit.org/show_bug.cgi?id=165566" target="_blank" rel="external">Allow commas in Accept, Accept-Language, and Content-Language request headers for simple CORS</a>, and <a href="https://bugs.webkit.org/show_bug.cgi?id=166363" target="_blank" rel="external">Switch to a blacklist model for restricted Accept headers in simple CORS requests</a>。其它浏览器并不支持这些额外的限制，因为它们不属于规范的一部分。</p>
+<p>如下是一个需要执行预检请求的 HTTP 请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var invocation = new XMLHttpRequest();</div><div class="line">var url = &apos;http://bar.other/resources/post-here/&apos;;</div><div class="line">var body = &apos;&lt;?xml version=&quot;1.0&quot;?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;&apos;;</div><div class="line">    </div><div class="line">function callOtherDomain()&#123;</div><div class="line">  if(invocation)</div><div class="line">    &#123;</div><div class="line">      invocation.open(&apos;POST&apos;, url, true);</div><div class="line">      invocation.setRequestHeader(&apos;X-PINGOTHER&apos;, &apos;pingpong&apos;);</div><div class="line">      invocation.setRequestHeader(&apos;Content-Type&apos;, &apos;application/xml&apos;);</div><div class="line">      invocation.onreadystatechange = handler;</div><div class="line">      invocation.send(body); </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">......</div></pre></td></tr></table></figure>
+<p>上面的代码使用 POST 请求发送一个 XML 文档，该请求包含了一个自定义的请求首部字段（X-PINGOTHER: pingpong）。另外，该请求的 Content-Type 为 application/xml。因此，该请求需要首先发起“预检请求”。</p>
+<p><img src="https://mdn.mozillademos.org/files/14289/prelight.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">OPTIONS /resources/post-here/ HTTP/1.1</div><div class="line">Host: bar.other</div><div class="line">User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">Accept-Language: en-us,en;q=0.5</div><div class="line">Accept-Encoding: gzip,deflate</div><div class="line">Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7</div><div class="line">Connection: keep-alive</div><div class="line">Origin: http://foo.example</div><div class="line">Access-Control-Request-Method: POST</div><div class="line">Access-Control-Request-Headers: X-PINGOTHER, Content-Type</div><div class="line"></div><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 01 Dec 2008 01:15:39 GMT</div><div class="line">Server: Apache/2.0.61 (Unix)</div><div class="line">Access-Control-Allow-Origin: http://foo.example</div><div class="line">Access-Control-Allow-Methods: POST, GET, OPTIONS</div><div class="line">Access-Control-Allow-Headers: X-PINGOTHER, Content-Type</div><div class="line">Access-Control-Max-Age: 86400</div><div class="line">Vary: Accept-Encoding, Origin</div><div class="line">Content-Encoding: gzip</div><div class="line">Content-Length: 0</div><div class="line">Keep-Alive: timeout=2, max=100</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-Type: text/plain</div></pre></td></tr></table></figure>
+<p>预检请求完成之后，发送实际请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">POST /resources/post-here/ HTTP/1.1</div><div class="line">Host: bar.other</div><div class="line">User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">Accept-Language: en-us,en;q=0.5</div><div class="line">Accept-Encoding: gzip,deflate</div><div class="line">Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7</div><div class="line">Connection: keep-alive</div><div class="line">X-PINGOTHER: pingpong</div><div class="line">Content-Type: text/xml; charset=UTF-8</div><div class="line">Referer: http://foo.example/examples/preflightInvocation.html</div><div class="line">Content-Length: 55</div><div class="line">Origin: http://foo.example</div><div class="line">Pragma: no-cache</div><div class="line">Cache-Control: no-cache</div><div class="line"></div><div class="line">&lt;?xml version=&quot;1.0&quot;?&gt;&lt;person&gt;&lt;name&gt;Arun&lt;/name&gt;&lt;/person&gt;</div><div class="line"></div><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 01 Dec 2008 01:15:40 GMT</div><div class="line">Server: Apache/2.0.61 (Unix)</div><div class="line">Access-Control-Allow-Origin: http://foo.example</div><div class="line">Vary: Accept-Encoding, Origin</div><div class="line">Content-Encoding: gzip</div><div class="line">Content-Length: 235</div><div class="line">Keep-Alive: timeout=2, max=99</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-Type: text/plain</div><div class="line"></div><div class="line">[Some GZIP&apos;d payload]</div></pre></td></tr></table></figure>
+<p>浏览器检测到，从 JavaScript 中发起的请求需要被预检。从上面的报文中，我们看到，第 1~12 行发送了一个使用 <code>OPTIONS 方法的“</code>预检请求<code>”。</code> OPTIONS 是 HTTP/1.1 协议中定义的方法，用以从服务器获取更多信息。该方法不会对服务器资源产生影响。 预检请求中同时携带了下面两个首部字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Access-Control-Request-Method: POST</div><div class="line">Access-Control-Request-Headers: X-PINGOTHER</div></pre></td></tr></table></figure>
+<p><code>首部字段 Access-Control-Request-Method 告知服务器，实际请求将使用 POST 方法。首部字段 ``Access-Control-Request-Headers 告知服务器，实际请求将携带两个自定义请求首部字段：X-PINGOTHER 与 Content-Type。服务器据此决定，该实际请求是否被允许。</code></p>
+<p>第14~26 行为预检请求的响应，表明服务器将接受后续的实际请求。重点看第 17~20 行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: http://foo.example</div><div class="line">Access-Control-Allow-Methods: POST, GET, OPTIONS</div><div class="line">Access-Control-Allow-Headers: X-PINGOTHER, Content-Type</div><div class="line">Access-Control-Max-Age: 86400</div></pre></td></tr></table></figure>
+<p><code>首部字段 Access-Control-Allow-Methods 表明服务器允许客户端使用 ``POST,</code> <code>GET 和</code> <code>OPTIONS 方法发起</code>请求。该字段与 <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.7" target="_blank" rel="external">HTTP/1.1 Allow: response header</a> 类似，但仅限于在需要访问控制的场景中使用。</p>
+<p>首部字段 <code>Access-Control-Allow-Headers 表明服务器允许请求中携带字段 X-PINGOTHER 与 Content-Type。与 ``Access-Control-Allow-Methods 一样，Access-Control-Allow-Headers 的值为逗号分割的列表。</code></p>
+<p><code>最后，首部字段 ``Access-Control-Max-Age 表明该</code>响应的有效时间为 86400 秒，也就是 24 小时。在有效时间内，浏览器无须为同一请求再次发起预检请求。请注意，浏览器自身维护了一个最大有效时间，如果该首部字段的值超过了最大有效时间，将不会生效。</p>
+<h4 id="预检请求与重定向"><a href="#预检请求与重定向" class="headerlink" title="预检请求与重定向"></a>预检请求与重定向</h4><p>大多数浏览器不支持针对于预检请求的重定向。如果一个预检请求发生了重定向，浏览器将报告错误：</p>
+<blockquote>
+<p>The request was redirected to ‘<a href="https://example.com/foo" target="_blank" rel="external">https://example.com/foo</a>‘, which is disallowed for cross-origin requests that require preflight</p>
+<p>Request requires preflight, which is disallowed to follow cross-origin redirect</p>
+</blockquote>
+<p>CORS 最初要求该行为，不过<a href="https://github.com/whatwg/fetch/commit/0d9a4db8bc02251cc9e391543bb3c1322fb882f2" target="_blank" rel="external">在后续的修订中废弃了这一要求</a>。</p>
+<p>在浏览器的实现跟上规范之前，有两种方式规避上述报错行为：</p>
+<ul>
+<li>在服务端去掉对预检请求的重定向；</li>
+<li>将实际请求变成一个简单请求。</li>
+</ul>
+<p>如果上面两种方式难以做到，我们仍有其他办法：</p>
+<ul>
+<li>使用简单请求模拟预检请求，用以探查预检请求是否重定向到其他 URL（使用  <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/url" target="_blank" rel="external">Response.url</a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseURL" target="_blank" rel="external">XHR.responseURL</a>）；</li>
+<li>向上一步中获得的 URL 发起请求。</li>
+</ul>
+<p>不过，如果请求由于缺失 Authorization 字段而引起一个预检请求，则这一方法将无法使用。这种情况只能由服务端进行更改。</p>
+<h3 id="附带身份凭证的请求"><a href="#附带身份凭证的请求" class="headerlink" title="附带身份凭证的请求"></a>附带身份凭证的请求</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch</a> 与 CORS 的一个有趣的特性是，可以基于  <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies" target="_blank" rel="external">HTTP cookies</a> 和 HTTP 认证信息发送身份凭证。一般而言，对于跨域 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest" target="_blank" rel="external"><code>XMLHttpRequest</code></a> 或 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank" rel="external">Fetch</a> 请求，浏览器<strong>不会</strong>发送身份凭证信息。如果要发送凭证信息，需要设置 <code>XMLHttpRequest</code>的某个特殊标志位。</p>
+<p><code>本例中，http://foo.example 的某脚本向 http://bar.other 发起一个GET 请求，并设置 Cookies：</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var invocation = new XMLHttpRequest();</div><div class="line">var url = &apos;http://bar.other/resources/credentialed-content/&apos;;</div><div class="line">    </div><div class="line">function callOtherDomain()&#123;</div><div class="line">  if(invocation) &#123;</div><div class="line">    invocation.open(&apos;GET&apos;, url, true);</div><div class="line">    invocation.withCredentials = true;</div><div class="line">    invocation.onreadystatechange = handler;</div><div class="line">    invocation.send(); </div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>第 7 行将 <code>XMLHttpRequest</code>的 <code>withCredentials 标志设置为 true，</code>从而向服务器发送 Cookies。因为这是一个简单 GET 请求，所以浏览器不会对其发起“预检请求”。但是，如果服务器端的响应中未携带 <code>Access-Control-Allow-Credentials: true ，浏览器将不会把响应内容返回给请求的发送者。</code></p>
+<p><img src="https://mdn.mozillademos.org/files/14291/cred-req.png" alt="img"></p>
+<p>客户端与服务器端交互示例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">GET /resources/access-control-with-credentials/ HTTP/1.1</div><div class="line">Host: bar.other</div><div class="line">User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; en-US; rv:1.9.1b3pre) Gecko/20081130 Minefield/3.1b3pre</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div><div class="line">Accept-Language: en-us,en;q=0.5</div><div class="line">Accept-Encoding: gzip,deflate</div><div class="line">Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7</div><div class="line">Connection: keep-alive</div><div class="line">Referer: http://foo.example/examples/credential.html</div><div class="line">Origin: http://foo.example</div><div class="line">Cookie: pageAccess=2</div><div class="line"></div><div class="line"></div><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Mon, 01 Dec 2008 01:34:52 GMT</div><div class="line">Server: Apache/2.0.61 (Unix) PHP/4.4.7 mod_ssl/2.0.61 OpenSSL/0.9.7e mod_fastcgi/2.4.2 DAV/2 SVN/1.4.2</div><div class="line">X-Powered-By: PHP/5.2.6</div><div class="line">Access-Control-Allow-Origin: http://foo.example</div><div class="line">Access-Control-Allow-Credentials: true</div><div class="line">Cache-Control: no-cache</div><div class="line">Pragma: no-cache</div><div class="line">Set-Cookie: pageAccess=3; expires=Wed, 31-Dec-2008 01:34:53 GMT</div><div class="line">Vary: Accept-Encoding, Origin</div><div class="line">Content-Encoding: gzip</div><div class="line">Content-Length: 106</div><div class="line">Keep-Alive: timeout=2, max=100</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-Type: text/plain</div><div class="line"></div><div class="line"></div><div class="line">[text/plain payload]</div></pre></td></tr></table></figure>
+<p>即使第 11 行指定了 Cookie 的相关信息，但是，如果 bar.other 的响应中缺失 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials" target="_blank" rel="external"><code>Access-Control-Allow-Credentials</code></a><code>: true（</code>第 19 行），则响应内容不会返回给请求的发起者。</p>
+<h4 id="附带身份凭证的请求与通配符"><a href="#附带身份凭证的请求与通配符" class="headerlink" title="附带身份凭证的请求与通配符"></a>附带身份凭证的请求与通配符</h4><p>对于附带身份凭证的请求，服务器不得设置 <code>Access-Control-Allow-Origin 的值为“*”。</code></p>
+<p><code>这是因为请求的首部中携带了 Cookie 信息，如果 Access-Control-Allow-Origin 的值为“*”，请求将会失败。而将 Access-Control-Allow-Origin 的值设置为</code><a href="http://foo.example，则请求将成功执行。" target="_blank" rel="external">http://foo.example，则请求将成功执行。</a></p>
+<p>另外，响应首部中也携带了 Set-Cookie 字段，尝试对 Cookie 进行修改。如果操作失败，将会抛出异常。</p>
+<h2 id="HTTP-响应首部字段"><a href="#HTTP-响应首部字段" class="headerlink" title="HTTP 响应首部字段"></a>HTTP 响应首部字段</h2><p>本节列出了规范所定义的响应首部字段。上一小节中，我们已经看到了这些首部字段在实际场景中是如何工作的。</p>
+<h3 id="Access-Control-Allow-Origin"><a href="#Access-Control-Allow-Origin" class="headerlink" title="Access-Control-Allow-Origin"></a>Access-Control-Allow-Origin</h3><p>响应首部中可以携带一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Origin" target="_blank" rel="external"><code>Access-Control-Allow-Origin</code></a><code>字段，其语法如下:</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: &lt;origin&gt; | *</div></pre></td></tr></table></figure>
+<p>其中，origin 参数的值指定了允许访问该资源的外域 URI。对于不需要携带身份凭证的请求，服务器可以指定该字段的值为通配符，表示允许来自所有域的请求。</p>
+<p>例如，下面的字段值将允许来自 <a href="http://mozilla.com" target="_blank" rel="external">http://mozilla.com</a> 的请求：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Origin: http://mozilla.com</div></pre></td></tr></table></figure>
+<p>如果服务端指定了具体的域名而非“*”，那么响应首部中的 Vary 字段的值必须包含 Origin。这将告诉客户端：服务器对不同的源站返回不同的内容。</p>
+<h3 id="Access-Control-Expose-Headers"><a href="#Access-Control-Expose-Headers" class="headerlink" title="Access-Control-Expose-Headers"></a>Access-Control-Expose-Headers</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers" target="_blank" rel="external"><code>Access-Control-Expose-Headers</code></a> 首部字段指定了服务端允许的首部字段集合。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Expose-Headers: X-My-Custom-Header, X-Another-Custom-Header</div></pre></td></tr></table></figure>
+<p><code>服务器允许请求中携带 X-My-Custom-Header</code> 和 <code>X-Another-Custom-Header 这两个字段。</code></p>
+<h3 id="Access-Control-Max-Age"><a href="#Access-Control-Max-Age" class="headerlink" title="Access-Control-Max-Age"></a>Access-Control-Max-Age</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Max-Age" target="_blank" rel="external"><code>Access-Control-Max-Age</code></a> 首部字段指明了预检请求的响应的有效时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Max-Age: &lt;delta-seconds&gt;</div></pre></td></tr></table></figure>
+<p><code>delta-seconds</code> 表示该响应在多少秒内有效。</p>
+<h3 id="Access-Control-Allow-Credentials"><a href="#Access-Control-Allow-Credentials" class="headerlink" title="Access-Control-Allow-Credentials"></a>Access-Control-Allow-Credentials</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials" target="_blank" rel="external"><code>Access-Control-Allow-Credentials</code></a> 首部字段用于预检请求的响应，表明服务器是否允许 credentials 标志设置为 true 的请求。请注意：简单 GET 请求不会被预检；如果对此类请求的响应中不包含该字段，浏览器不会将响应返回给请求的调用者。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Credentials: true</div></pre></td></tr></table></figure>
+<p>上文已经讨论了<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#Requests_with_credentials" target="_blank" rel="external">附带身份凭证的请求</a>。</p>
+<h3 id="Access-Control-Allow-Methods"><a href="#Access-Control-Allow-Methods" class="headerlink" title="Access-Control-Allow-Methods"></a>Access-Control-Allow-Methods</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" target="_blank" rel="external"><code>Access-Control-Allow-Methods</code></a> 首部字段用于预检请求的响应。其指明了实际请求所允许使用的 HTTP 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Methods: &lt;method&gt;[, &lt;method&gt;]*</div></pre></td></tr></table></figure>
+<p>相关示例见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS$edit#Preflighted_requests" target="_blank" rel="external">这里</a>。</p>
+<h3 id="Access-Control-Allow-Headers"><a href="#Access-Control-Allow-Headers" class="headerlink" title="Access-Control-Allow-Headers"></a>Access-Control-Allow-Headers</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Allow-Headers" target="_blank" rel="external"><code>Access-Control-Allow-Headers</code></a> 首部字段用于预检请求的响应。其指明了实际请求中允许携带的首部字段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Allow-Headers: &lt;field-name&gt;[, &lt;field-name&gt;]*</div></pre></td></tr></table></figure>
+<h2 id="HTTP-请求首部字段"><a href="#HTTP-请求首部字段" class="headerlink" title="HTTP 请求首部字段"></a>HTTP 请求首部字段</h2><p>本节列出了可用于发起跨域请求的首部字段。请注意，这些首部字段无须手动设置。 当开发者使用 XMLHttpRequest 对象发起跨域请求时，它们已经被设置就绪。</p>
+<h3 id="Origin"><a href="#Origin" class="headerlink" title="Origin"></a>Origin</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Origin" target="_blank" rel="external"><code>Origin</code></a> 首部字段表明预检请求或实际请求的源站。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Origin: &lt;origin&gt;</div></pre></td></tr></table></figure>
+<p>origin 参数的值为源站 URI。它不包含任何路径信息，只是服务器名称。</p>
+<p><strong>Note:</strong> 有时候将该字段的值设置为空字符串是有用的，例如，当源站是一个 data URL 时。</p>
+<p>注意，不管是否为跨域请求，ORIGIN 字段总是被发送。</p>
+<h3 id="Access-Control-Request-Method"><a href="#Access-Control-Request-Method" class="headerlink" title="Access-Control-Request-Method"></a>Access-Control-Request-Method</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Method" target="_blank" rel="external"><code>Access-Control-Request-Method</code></a> 首部字段用于预检请求。其作用是，将实际请求所使用的 HTTP 方法告诉服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Access-Control-Request-Method: &lt;method&gt;</div></pre></td></tr></table></figure>
+<p>相关示例见<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS#Preflighted_requests" target="_blank" rel="external">这里</a>。</p>
+<h3 id="Access-Control-Request-Headers"><a href="#Access-Control-Request-Headers" class="headerlink" title="Access-Control-Request-Headers"></a>Access-Control-Request-Headers</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers" target="_blank" rel="external"><code>Access-Control-Request-Headers</code></a> 首部字段用于预检请求。其作用是，将实际请求所携带的首部字段告诉服务器。</p>
+
+      
+    </div>
+
+
+
+
+
+
+
+    <div>
+      
+        
+
+      
+    </div>
+
+        <div>
+          
+           <div style="text-align:center;color: #ccc;font-size:16px;">----------------全文结束，感谢您的阅读----------------</div>
+                <div style="text-align:center;color: #ccc;font-size:14px;">-------------THE END THANK YOU-------------</div>
+          
+        </div>
+
+
+    <div align="center";font-size:14px;>
+      
+        <div class="copyright">
+        <p><span>
+        <b>转载请注明出处，谢谢！</b>
+        </span></p>
+        </div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/http/" rel="tag"># http</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/20/第三方登录服务使用心得/" rel="next" title="第三方登录服务的使用心得">
+                <i class="fa fa-chevron-left"></i> 第三方登录服务的使用心得
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/10/打造自己的API/" rel="prev" title="不求人，打造自己的API">
+                不求人，打造自己的API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODk1NC81NTIz"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            网站概况
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/zero.png"
+               alt="谢 晓 驰" />
+          <p class="site-author-name" itemprop="name">谢 晓 驰</p>
+           
+              <p class="site-description motion-element" itemprop="description">你老了，那曾经年轻的都在变老。你会说：那时的痛、缺憾、甚至背弃，都多么的好</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP访问控制（CORS）"><span class="nav-number">1.</span> <span class="nav-text">HTTP访问控制（CORS）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#若干访问控制场景"><span class="nav-number">3.</span> <span class="nav-text">若干访问控制场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单请求"><span class="nav-number">3.1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#预检请求"><span class="nav-number">3.2.</span> <span class="nav-text">预检请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#预检请求与重定向"><span class="nav-number">3.2.1.</span> <span class="nav-text">预检请求与重定向</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附带身份凭证的请求"><span class="nav-number">3.3.</span> <span class="nav-text">附带身份凭证的请求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#附带身份凭证的请求与通配符"><span class="nav-number">3.3.1.</span> <span class="nav-text">附带身份凭证的请求与通配符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-响应首部字段"><span class="nav-number">4.</span> <span class="nav-text">HTTP 响应首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Allow-Origin"><span class="nav-number">4.1.</span> <span class="nav-text">Access-Control-Allow-Origin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Expose-Headers"><span class="nav-number">4.2.</span> <span class="nav-text">Access-Control-Expose-Headers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Max-Age"><span class="nav-number">4.3.</span> <span class="nav-text">Access-Control-Max-Age</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Allow-Credentials"><span class="nav-number">4.4.</span> <span class="nav-text">Access-Control-Allow-Credentials</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Allow-Methods"><span class="nav-number">4.5.</span> <span class="nav-text">Access-Control-Allow-Methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Allow-Headers"><span class="nav-number">4.6.</span> <span class="nav-text">Access-Control-Allow-Headers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-请求首部字段"><span class="nav-number">5.</span> <span class="nav-text">HTTP 请求首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Origin"><span class="nav-number">5.1.</span> <span class="nav-text">Origin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Request-Method"><span class="nav-number">5.2.</span> <span class="nav-text">Access-Control-Request-Method</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Access-Control-Request-Headers"><span class="nav-number">5.3.</span> <span class="nav-text">Access-Control-Request-Headers</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">谢 晓 驰</span>
+</div>
+
+
+<div class="powered-by">
+    有心为善  虽善不善
+</div>
+
+<div class="theme-info">
+  无心作恶  虽恶不罚
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-ribbon/canvas-ribbon.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
